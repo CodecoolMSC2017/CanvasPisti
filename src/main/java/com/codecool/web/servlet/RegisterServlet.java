@@ -18,17 +18,12 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletContext sc = getServletContext();
         RegisterService myData = (RegisterService)sc.getAttribute("myDatabase");
-        User unReg = myData.getUnReg();
         User registered = myData.getReg();
         User user1 = new User(req.getParameter("name"), req.getParameter("email"), req.getParameter("role"));
-        if (user1.getName() != "" && user1.getEmail() != "" && user1.getRole() != "") {
-            req.setAttribute("register", registered);
-            myData.getUserList().add(user1);
-            req.getRequestDispatcher("registry.jsp").forward(req, resp);
-        }else{
-            req.setAttribute("register", unReg);
-            req.getRequestDispatcher("registry.jsp").forward(req, resp);
-        }
+        req.setAttribute("register", registered);
+        myData.getUserList().add(user1);
+        req.getRequestDispatcher("registry.jsp").forward(req, resp);
+
 
     }
 
