@@ -69,3 +69,25 @@ button:hover {
 }
 
 /* REGISTRY PAGE ENDED */
+
+/* LOGIN  */
+#header{
+text-align: center;
+font-family:"Rametto One";
+}
+
+
+#lh{
+text-align:center;
+font-family:Osvald;
+}
+
+#login{
+text-align: center;
+}
+
+
+#brand{
+text-align:center;
+}
+/* END OF LOGIN */

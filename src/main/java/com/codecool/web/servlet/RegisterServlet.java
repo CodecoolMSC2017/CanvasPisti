@@ -20,16 +20,22 @@ public class RegisterServlet extends HttpServlet {
         RegisterService myData = (RegisterService)sc.getAttribute("myDatabase");
         User unReg = myData.getAllReg();
         User registered = myData.getReg();
+        User empty = myData.getEmptyReg();
         User user1 = new User(req.getParameter("name"), req.getParameter("email"), req.getParameter("role"));
-        for(User user:myData.getUserList()){
-            if(user.getEmail().equalsIgnoreCase(user1.getEmail())){
-                req.setAttribute("register", unReg);
-                req.getRequestDispatcher("registry.jsp").forward(req, resp);
+        if(user1.getRole()==null){
+            req.setAttribute("register", empty);
+            req.getRequestDispatcher("registry.jsp").forward(req, resp);
+        }else {
+            for (User user : myData.getUserList()) {
+                if (user.getEmail().equalsIgnoreCase(user1.getEmail())) {
+                    req.setAttribute("register", unReg);
+                    req.getRequestDispatcher("registry.jsp").forward(req, resp);
+                }
             }
+            req.setAttribute("register", registered);
+            myData.getUserList().add(user1);
+            req.getRequestDispatcher("registry.jsp").forward(req, resp);
         }
-        req.setAttribute("register", registered);
-        myData.getUserList().add(user1);
-        req.getRequestDispatcher("registry.jsp").forward(req, resp);
 
 
     }

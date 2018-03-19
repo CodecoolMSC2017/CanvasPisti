@@ -11,6 +11,8 @@ public final class RegisterService {
 
     public User getAllReg(){return new User("That person already registered");}
 
+    public User getEmptyReg(){return new User("You need to choose student or teacher!");}
+
     private List<User> userList = new ArrayList<>();
 
     public List<User> getUserList() {
