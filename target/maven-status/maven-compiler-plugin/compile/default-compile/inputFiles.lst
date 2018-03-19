@@ -1,6 +1,7 @@
 /home/daviddude/Java intelij/CanvasPisti/src/main/java/com/codecool/web/listener/WebappContextListener.java
 /home/daviddude/Java intelij/CanvasPisti/src/main/java/com/codecool/web/service/LoginService.java
 /home/daviddude/Java intelij/CanvasPisti/src/main/java/com/codecool/web/servlet/GreetingServlet.java
+/home/daviddude/Java intelij/CanvasPisti/src/main/java/com/codecool/web/servlet/AllUsersServlet.java
 /home/daviddude/Java intelij/CanvasPisti/src/main/java/com/codecool/web/model/Greeting.java
 /home/daviddude/Java intelij/CanvasPisti/src/main/java/com/codecool/web/service/RegisterService.java
 /home/daviddude/Java intelij/CanvasPisti/src/main/java/com/codecool/web/model/User.java

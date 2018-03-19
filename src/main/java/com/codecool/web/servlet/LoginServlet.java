@@ -28,13 +28,14 @@ public class LoginServlet extends HttpServlet {
         }else {
             for (User user : myData.getUserList()) {
                 if (user.getEmail().equals(req.getParameter("email"))) {
-                    req.setAttribute("loginServlet", user);
+                    LoginService.setCurrentUser(user);
+                    req.setAttribute("loginServlet", LoginService.getCurrentUser());
                     req.getRequestDispatcher("main.jsp").forward(req, resp);
-                }else{
-                    req.setAttribute("loginServlet",unLogUser);
-                    req.getRequestDispatcher("unlogin.jsp").forward(req,resp);
                 }
             }
+            req.setAttribute("loginServlet",unLogUser);
+            req.getRequestDispatcher("unlogin.jsp").forward(req,resp);
+
         }
 
 
