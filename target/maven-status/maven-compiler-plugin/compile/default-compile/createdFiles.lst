@@ -1,7 +1,8 @@
+com/codecool/web/servlet/AttendanceServlet.class
 com/codecool/web/model/Greeting.class
 com/codecool/web/model/User.class
-com/codecool/web/service/LoginService.class
 com/codecool/web/service/GreetingService.class
+com/codecool/web/service/LoginService.class
 com/codecool/web/servlet/RegisterServlet.class
 com/codecool/web/listener/WebappContextListener.class
 com/codecool/web/servlet/LoginServlet.class

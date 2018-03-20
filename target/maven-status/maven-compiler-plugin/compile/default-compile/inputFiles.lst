@@ -1,10 +1,11 @@
-/home/daviddude/Java intelij/CanvasPisti/src/main/java/com/codecool/web/listener/WebappContextListener.java
-/home/daviddude/Java intelij/CanvasPisti/src/main/java/com/codecool/web/service/LoginService.java
-/home/daviddude/Java intelij/CanvasPisti/src/main/java/com/codecool/web/servlet/GreetingServlet.java
-/home/daviddude/Java intelij/CanvasPisti/src/main/java/com/codecool/web/servlet/AllUsersServlet.java
-/home/daviddude/Java intelij/CanvasPisti/src/main/java/com/codecool/web/model/Greeting.java
-/home/daviddude/Java intelij/CanvasPisti/src/main/java/com/codecool/web/service/RegisterService.java
-/home/daviddude/Java intelij/CanvasPisti/src/main/java/com/codecool/web/model/User.java
-/home/daviddude/Java intelij/CanvasPisti/src/main/java/com/codecool/web/servlet/LoginServlet.java
-/home/daviddude/Java intelij/CanvasPisti/src/main/java/com/codecool/web/service/GreetingService.java
-/home/daviddude/Java intelij/CanvasPisti/src/main/java/com/codecool/web/servlet/RegisterServlet.java
+/Users/macintosh/Documents/develop/HTML/CanvasPisti/src/main/java/com/codecool/web/service/RegisterService.java
+/Users/macintosh/Documents/develop/HTML/CanvasPisti/src/main/java/com/codecool/web/servlet/LoginServlet.java
+/Users/macintosh/Documents/develop/HTML/CanvasPisti/src/main/java/com/codecool/web/model/User.java
+/Users/macintosh/Documents/develop/HTML/CanvasPisti/src/main/java/com/codecool/web/service/LoginService.java
+/Users/macintosh/Documents/develop/HTML/CanvasPisti/src/main/java/com/codecool/web/servlet/AllUsersServlet.java
+/Users/macintosh/Documents/develop/HTML/CanvasPisti/src/main/java/com/codecool/web/servlet/GreetingServlet.java
+/Users/macintosh/Documents/develop/HTML/CanvasPisti/src/main/java/com/codecool/web/servlet/RegisterServlet.java
+/Users/macintosh/Documents/develop/HTML/CanvasPisti/src/main/java/com/codecool/web/model/Greeting.java
+/Users/macintosh/Documents/develop/HTML/CanvasPisti/src/main/java/com/codecool/web/listener/WebappContextListener.java
+/Users/macintosh/Documents/develop/HTML/CanvasPisti/src/main/java/com/codecool/web/service/GreetingService.java
+/Users/macintosh/Documents/develop/HTML/CanvasPisti/src/main/java/com/codecool/web/servlet/AttendanceServlet.java

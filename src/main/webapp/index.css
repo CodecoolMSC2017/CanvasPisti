@@ -48,6 +48,10 @@ button:hover {
   float: left;
   width: 50%;
 }
+.loginbtn {
+  float: left;
+  width: 50%;
+}
 
 /* Add padding to container elements */
 .container {
