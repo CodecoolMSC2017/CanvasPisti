@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,21 +21,16 @@
                    </ul>
                </div>
                <div id="main">
-                   <h2>Registered Users</h2>
-                   <table>
-                       <tr>
-                           <th>Name</th>
-                           <th>Email</th>
-                           <th>Role</th>
-                       </tr>
-                       <c:forEach items="${allusers}" var="user">
-                           <tr>
-                               <td><c:out value="${user.name}" /></td>
-                               <td><c:out value="${user.email}" /></td>
-                               <td><c:out value="${user.role}" /></td>
-                           </tr>
-                       </c:forEach>
-                   </table>
+                   <h2>User Profile</h2>
+                   <form action="edit" method="post">
+                         Username:
+                         <input type="text" name="name" value="${username}"><br>
+                         <p>Current role: ${userrole}</p>
+                         <input type="radio" name="role" value="Student"> Student<br>
+                         <input type="radio" name="role" value="Mentor"> Mentor<br>
+                         <p>Email: ${useremail}</p><br>
+                         <input type="submit" value="Submit/Homepage">
+                       </form>
                </div>
            </div>
            <div id="footer">

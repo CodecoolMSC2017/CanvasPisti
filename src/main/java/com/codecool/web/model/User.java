@@ -31,4 +31,12 @@ public class User {
     public String getText() {
         return text;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }

@@ -17,11 +17,11 @@
                    <h3>Navigation</h3>
                    <ul>
                        <li><a class="selected" href="registeredList">Registered Users</a></li>
+                       <li><a class="selected" href="userprofile">User Profile</a></li>
                    </ul>
                </div>
                <div id="main">
                    <h2>Home page</h2>
-                   <p1>${loginServlet.name}</p1>
                </div>
            </div>
            <div id="footer">
