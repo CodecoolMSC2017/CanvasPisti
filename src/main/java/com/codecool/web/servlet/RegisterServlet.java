@@ -21,5 +21,8 @@ public class RegisterServlet extends HttpServlet {
         User user1 = new User(req.getParameter("name"), req.getParameter("email"), req.getParameter("role"));
         myData.checkRegisterFields(req, resp,user1);
     }
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("registry.html").forward(req,resp);
+    }
 
 }
