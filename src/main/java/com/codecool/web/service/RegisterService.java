@@ -16,6 +16,8 @@ public final class RegisterService {
 
     public String getAllReg(){return "That person already registered";}
 
+    public String getMiss(){return "You need a correct email address form";}
+
     public String getEmptyReg(){return"You need to choose student or teacher!";}
 
     private List<User> userList = new ArrayList<>();
@@ -28,7 +30,11 @@ public final class RegisterService {
         if(user1.getRole()==null){
             req.setAttribute("register", this.getEmptyReg());
             req.getRequestDispatcher("registry.jsp").forward(req, resp);
-        }else {
+        }
+        else if(!user1.getEmail().contains(".")&& !user1.getEmail().contains("@")) {
+            req.setAttribute("register", this.getMiss());
+            req.getRequestDispatcher("registry.jsp").forward(req, resp);
+        }else{
             for (User user : this.getUserList()) {
                 if (user.getEmail().equalsIgnoreCase(user1.getEmail())) {
                     req.setAttribute("register", this.getAllReg());

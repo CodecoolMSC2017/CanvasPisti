@@ -1,7 +1,6 @@
 package com.codecool.web.model;
 
 public class User {
-    private String text;
     private String name;
     private String email;
     private String role;
@@ -22,14 +21,6 @@ public class User {
 
     public String getRole() {
         return role;
-    }
-
-    public User(String text) {
-        this.text = text;
-    }
-
-    public String getText() {
-        return text;
     }
 
     public void setName(String name) {
