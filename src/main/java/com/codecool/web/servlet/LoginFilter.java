@@ -25,7 +25,7 @@ public class LoginFilter implements javax.servlet.Filter{
             filterChain.doFilter(req, res);
             return;
         }
-        if (url.equals("login.jsp") || url.equals("registry.jsp") || url.equals("index.html") || url.equals("") || url.equals("greeting.jsp")||url.equals("loginServlet")||url.equals("register")||url.equals("greeting")) {
+        if (url.equals("login.jsp") || url.equals("registry.jsp") || url.equals("index.jsp") || url.equals("") || url.equals("loginServlet")||url.equals("register")) {
             filterChain.doFilter(request, response);
         } else {
             if (session.getAttribute("logged") != null) {
