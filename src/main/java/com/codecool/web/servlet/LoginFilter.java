@@ -25,13 +25,13 @@ public class LoginFilter implements javax.servlet.Filter{
             filterChain.doFilter(req, res);
             return;
         }
-        if (url.equals("login.jsp") || url.equals("registry.jsp") || url.equals("index.html") || url.equals("") || url.equals("greeting.jsp")||url.equals("unlogin.jsp")||url.equals("loginServlet")||url.equals("register")||url.equals("greeting")||url.equals("logerror.jsp")) {
+        if (url.equals("login.jsp") || url.equals("registry.jsp") || url.equals("index.html") || url.equals("") || url.equals("greeting.jsp")||url.equals("loginServlet")||url.equals("register")||url.equals("greeting")) {
             filterChain.doFilter(request, response);
         } else {
             if (session.getAttribute("logged") != null) {
                 filterChain.doFilter(req, res);
             }else{
-                req.getRequestDispatcher("registry.html").forward(req,res);
+                req.getRequestDispatcher("registry.jsp").forward(req,res);
             }
 
         }

@@ -22,7 +22,7 @@ public class RegisterServlet extends HttpServlet {
         myData.checkRegisterFields(req, resp,user1);
     }
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("registry.html").forward(req,resp);
+        req.getRequestDispatcher("registry.jsp").forward(req,resp);
     }
 
 }

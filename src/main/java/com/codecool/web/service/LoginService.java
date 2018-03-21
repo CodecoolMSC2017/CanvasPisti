@@ -16,11 +16,11 @@ public final class LoginService {
 
 
     public void checkingLogin(HttpServletRequest req, HttpServletResponse resp, RegisterService myData) throws ServletException, IOException {
-        User tempUser = null;
+        User tempUser;
         HttpSession session = req.getSession();
         if (myData.getUserList().size() == 0) {
             req.setAttribute("loginServlet", getUnLog());
-            req.getRequestDispatcher("unlogin.jsp").forward(req, resp);
+            req.getRequestDispatcher("login.jsp").forward(req, resp);
         } else {
             for (User user : myData.getUserList()) {
                 if (user.getEmail().equals(req.getParameter("email"))) {
@@ -30,7 +30,7 @@ public final class LoginService {
                 }
             }
             req.setAttribute("loginServlet", getUnLog());
-            req.getRequestDispatcher("unlogin.jsp").forward(req, resp);
+            req.getRequestDispatcher("login.jsp").forward(req, resp);
 
         }
     }
