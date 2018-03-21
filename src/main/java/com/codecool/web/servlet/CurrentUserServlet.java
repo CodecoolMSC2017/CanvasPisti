@@ -17,14 +17,14 @@ public class CurrentUserServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        /*User user = LoginService.getCurrentUser();
-        String userName = user.getName();
-        String userEmail = user.getEmail();
-        String userRole = user.getRole();
+        User tempUser = (User)req.getSession().getAttribute("logged");
+        String userName = tempUser.getName();
+        String userEmail = tempUser.getEmail();
+        String userRole = tempUser.getRole();
 
         req.setAttribute("username", userName);
         req.setAttribute("useremail", userEmail);
         req.setAttribute("userrole", userRole);
-        req.getRequestDispatcher("userprofile.jsp").forward(req, resp);*/
+        req.getRequestDispatcher("userprofile.jsp").forward(req, resp);
     }
 }

@@ -16,9 +16,9 @@ public class EditUserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       /* User user = LoginService.getCurrentUser();
-        String userName = user.getName();
-        String userRole = user.getRole();
+        User tempUser = (User)req.getSession().getAttribute("logged");
+        String userName = tempUser.getName();
+        String userRole = tempUser.getRole();
 
         if (req.getParameter("name").equals(userName) && req.getParameter("role") == null) {
             req.getRequestDispatcher("main.jsp").forward(req, resp);
@@ -27,21 +27,21 @@ public class EditUserServlet extends HttpServlet {
             req.getRequestDispatcher("main.jsp").forward(req, resp);
 
         } else if (!req.getParameter("name").equals(userName) && req.getParameter("role") == null || req.getParameter("role").equalsIgnoreCase(userRole) && !req.getParameter("name").equals(userName)) {
-            user.setName(req.getParameter("name"));
-            req.setAttribute("name", user);
+            tempUser.setName(req.getParameter("name"));
+            req.setAttribute("name", tempUser);
             req.getRequestDispatcher("main.jsp").forward(req, resp);
 
         } else if (!req.getParameter("role").equalsIgnoreCase(userRole) && req.getParameter("name").equals(userName)) {
-            user.setRole(req.getParameter("role"));
-            req.setAttribute("role", user);
+            tempUser.setRole(req.getParameter("role"));
+            req.setAttribute("role", tempUser);
             req.getRequestDispatcher("main.jsp").forward(req, resp);
 
         } else if (!req.getParameter("role").equals(userRole) && !req.getParameter("name").equals(userName)) {
-            user.setRole(req.getParameter("role"));
-            req.setAttribute("role", user);
-            user.setName(req.getParameter("name"));
-            req.setAttribute("name", user);
+            tempUser.setRole(req.getParameter("role"));
+            req.setAttribute("role", tempUser);
+            tempUser.setName(req.getParameter("name"));
+            req.setAttribute("name", tempUser);
             req.getRequestDispatcher("main.jsp").forward(req, resp);
-        }*/
+        }
     }
 }
