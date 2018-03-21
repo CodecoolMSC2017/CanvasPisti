@@ -16,7 +16,7 @@ public class EditUserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = LoginService.getCurrentUser();
+       /* User user = LoginService.getCurrentUser();
         String userName = user.getName();
         String userRole = user.getRole();
 
@@ -42,6 +42,6 @@ public class EditUserServlet extends HttpServlet {
             user.setName(req.getParameter("name"));
             req.setAttribute("name", user);
             req.getRequestDispatcher("main.jsp").forward(req, resp);
-        }
+        }*/
     }
 }

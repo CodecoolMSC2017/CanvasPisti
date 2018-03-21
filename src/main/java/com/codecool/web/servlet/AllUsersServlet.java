@@ -22,7 +22,6 @@ public class AllUsersServlet extends HttpServlet {
 
         List<User> allUsers = ((RegisterService) sc.getAttribute("myDatabase")).getUserList();
         req.setAttribute("allusers", allUsers);
-        req.setAttribute("loginServlet", LoginService.getCurrentUser());
         req.getRequestDispatcher("registeredList.jsp").forward(req, resp);
 
 

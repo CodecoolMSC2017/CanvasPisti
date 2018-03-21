@@ -9,6 +9,6 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-   <p1>${loginServlet.text}</p1>
+   <p1>${loginServlet}</p1>
 </body>
 </html>

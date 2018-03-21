@@ -2,18 +2,31 @@ package com.codecool.web.service;
 
 import com.codecool.web.model.User;
 
-public final class LoginService {
-    static User user;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
-    public String getLog(){
-        return "Logged in!";
-    }
+public final class LoginService {
 
     public String getUnLog(){
         return "Please give correct inputs!";
     }
 
-    public static User getCurrentUser(){return user;}
 
-    public static void setCurrentUser(User user1){user = user1;}
+    public void checkingLogin(HttpServletRequest req, HttpServletResponse resp,RegisterService myData) throws ServletException, IOException {
+        if(myData.getUserList().size()==0){
+            req.setAttribute("loginServlet",getUnLog());
+            req.getRequestDispatcher("unlogin.jsp").forward(req,resp);
+        }else {
+            for (User user : myData.getUserList()) {
+                if (user.getEmail().equals(req.getParameter("email"))) {
+                    req.getRequestDispatcher("main.jsp").forward(req, resp);
+                }
+            }
+            req.setAttribute("loginServlet",getUnLog());
+            req.getRequestDispatcher("unlogin.jsp").forward(req,resp);
+
+        }
+    }
 }

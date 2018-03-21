@@ -21,23 +21,10 @@ public class LoginServlet extends HttpServlet {
         ServletContext sc = getServletContext();
         LoginService ls = new LoginService();
         RegisterService myData = (RegisterService) sc.getAttribute("myDatabase");
-        if(myData.getUserList().size()==0){
-            req.setAttribute("loginServlet",ls.getUnLog());
-            req.getRequestDispatcher("unlogin.jsp").forward(req,resp);
-        }else {
-            for (User user : myData.getUserList()) {
-                if (user.getEmail().equals(req.getParameter("email"))) {
-                    LoginService.setCurrentUser(user);
-                    req.setAttribute("loginServlet", LoginService.getCurrentUser());
-                    req.getRequestDispatcher("main.jsp").forward(req, resp);
-                }
-            }
-            req.setAttribute("loginServlet",ls.getUnLog());
-            req.getRequestDispatcher("unlogin.jsp").forward(req,resp);
-
-        }
-
+        ls.checkingLogin(req, resp,myData);
 
     }
+
+
 
 }
