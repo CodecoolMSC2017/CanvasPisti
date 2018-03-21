@@ -21,7 +21,7 @@ public class LoginFilter implements javax.servlet.Filter{
         HttpSession session = request.getSession();
         String path = ((HttpServletRequest) req).getRequestURI();
         String url = path.substring(path.lastIndexOf("/") + 1, path.length());
-        if (url.endsWith(".css")) {
+        if (url.endsWith(".css")||url.endsWith(".jpeg")) {
             filterChain.doFilter(req, res);
             return;
         }
