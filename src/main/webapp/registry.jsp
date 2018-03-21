@@ -9,6 +9,6 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-   <p1>${register.text}</p1>
+   <p1>${register}</p1>
 </body>
 </html>

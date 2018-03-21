@@ -20,10 +20,9 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletContext sc = getServletContext();
         LoginService ls = new LoginService();
-        User unLogUser = ls.getUnLog();
         RegisterService myData = (RegisterService) sc.getAttribute("myDatabase");
         if(myData.getUserList().size()==0){
-            req.setAttribute("loginServlet",unLogUser);
+            req.setAttribute("loginServlet",ls.getUnLog());
             req.getRequestDispatcher("unlogin.jsp").forward(req,resp);
         }else {
             for (User user : myData.getUserList()) {
@@ -33,7 +32,7 @@ public class LoginServlet extends HttpServlet {
                     req.getRequestDispatcher("main.jsp").forward(req, resp);
                 }
             }
-            req.setAttribute("loginServlet",unLogUser);
+            req.setAttribute("loginServlet",ls.getUnLog());
             req.getRequestDispatcher("unlogin.jsp").forward(req,resp);
 
         }
