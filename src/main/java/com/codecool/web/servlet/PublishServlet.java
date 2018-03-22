@@ -11,22 +11,24 @@ import java.io.IOException;
 @WebServlet("/publish")
 public class PublishServlet extends HttpServlet{
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Singletondb db = Singletondb.getInstance();
         String[] arr= req.getParameterValues("name");
 
-        for (int i = 0; i <arr.length ; i++) {
-            for (int j = 0; j <db.getPageList().size() ; j++) {
+        if(arr != null) {
+            for (int i = 0; i < arr.length; i++) {
+                for (int j = 0; j < db.getPageList().size(); j++) {
 
-                if(arr[i].equals(db.getPageList().get(j).getTitle())){
-                    if(!db.getPageList().get(j).isPublished()) {
-                        db.getPageList().get(j).setPublished(true);
-                    }else{
-                        db.getPageList().get(j).setPublished(false);
+                    if (arr[i].equals(db.getPageList().get(j).getTitle())) {
+                        if (!db.getPageList().get(j).isPublished()) {
+                            db.getPageList().get(j).setPublished(true);
+                        } else {
+                            db.getPageList().get(j).setPublished(false);
+                        }
                     }
                 }
             }
         }
-        req.getRequestDispatcher("curriculum.jsp").forward(req,resp);
+        resp.sendRedirect("curriculum");
     }
 }

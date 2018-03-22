@@ -1,14 +1,19 @@
 package com.codecool.web.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
     private String name;
     private String email;
     private String role;
+    private List<String> titleList;
 
     public User(String name, String email, String role) {
         this.name = name;
         this.email = email;
         this.role = role;
+        titleList = new ArrayList<>();
     }
 
     public String getName() {
@@ -29,5 +34,9 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public List<String> getTitleList() {
+        return titleList;
     }
 }

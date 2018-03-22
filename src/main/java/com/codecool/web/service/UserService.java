@@ -13,19 +13,20 @@ public final class UserService {
         User tempUser = (User) req.getSession().getAttribute("logged");
         String userName = tempUser.getName();
         String userRole = tempUser.getRole();
+        if (req.getParameter("role") == null) {
+            if (req.getParameter("name").equals(userName)) {
+                req.getRequestDispatcher("main.jsp").forward(req, resp);
 
-        if (req.getParameter("name").equals(userName) && req.getParameter("role") == null) {
-            req.getRequestDispatcher("main.jsp").forward(req, resp);
+            } else if (!req.getParameter("name").equals(userName)) {
+                tempUser.setName(req.getParameter("name"));
+                req.setAttribute("name", tempUser);
+                req.getRequestDispatcher("main.jsp").forward(req, resp);
 
+            }
         } else if (req.getParameter("role").equalsIgnoreCase(userRole)) {
             req.getRequestDispatcher("main.jsp").forward(req, resp);
-
-        } else if (!req.getParameter("name").equals(userName) && req.getParameter("role") == null || req.getParameter("role").equalsIgnoreCase(userRole) && !req.getParameter("name").equals(userName)) {
-            tempUser.setName(req.getParameter("name"));
-            req.setAttribute("name", tempUser);
-            req.getRequestDispatcher("main.jsp").forward(req, resp);
-
         } else if (!req.getParameter("role").equalsIgnoreCase(userRole) && req.getParameter("name").equals(userName)) {
+
             tempUser.setRole(req.getParameter("role"));
             req.setAttribute("role", tempUser);
             req.getRequestDispatcher("main.jsp").forward(req, resp);

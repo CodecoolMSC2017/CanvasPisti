@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,11 +18,10 @@
                    <h3>Navigation</h3>
                    <ul>
                        <li><a class="selected" href="registeredList">Registered Users</a></li>
-                       <li><a class="selected" href="main.jsp">Homepage</a></li>
+                       <li><a class="selected" href="userprofile">User Profile</a></li>
                        <li><a class="selected" href="attendance">Attendance List</a></li>
                        <li><a class="selected" href="curriculum">Curriculum Page</a></li>
-                        <form action="logout" method="post">
-                        <button type="submit">Log out</button></form>
+                       <li><a class="selected" href="logout">Log out</a></li>
                    </ul>
                </div>
                <div id="main">
@@ -30,8 +30,14 @@
                          Username:
                          <input type="text" name="name" value="${username}"><br>
                          <p>Current role: ${userrole}</p>
+                         <c:choose>
+                         <c:when test ="${userrole =='Mentor'}">
                          <input type="radio" name="role" value="Student"> Student<br>
+                         </c:when>
+                         <c:otherwise>
                          <input type="radio" name="role" value="Mentor"> Mentor<br>
+                         </c:otherwise>
+                         </c:choose>
                          <p>Email: ${useremail}</p><br>
                          <input type="submit" value="Submit/Homepage">
                        </form>

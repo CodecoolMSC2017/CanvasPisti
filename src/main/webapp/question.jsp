@@ -25,15 +25,25 @@
                </div>
                <div id="main">
                    <h2>Assignment page</h2>
-                   <p1>${textcontent.title}</p1>
-                   <p2>${textcontent.question}</p2><br>
-                   <p2>${textcontent.maxScore}</p2><br>
-                   <p2>${textcontent.published}</p2>
-
-                   <form action="evaluate" method="post">
-                   <input type="text" name="answerAssign" placeholder="Answere">
-                   <button type="submit" class="submitbtn">Assign</button>
+                   <table>
+                        <tr>
+                        <th>Title:${textcontent.title}</th>
+                        </tr>
+                        <tr>
+                        <td>Question:${textcontent.question}</td>
+                        </tr>
+                        <tr>
+                        <td><form action="evaluate" method="post">
+                        <input type="text" name="answerAssign" placeholder="Answere"></td>
+                        </tr>
+                        <tr>
+                        <td>Max Score:${textcontent.maxScore}</td>
+                        </tr>
+                        <tr>
+                        <td><button type="submit" class="submitbtn">Assign</button></td>
+                        </tr>
                    </form>
+                  </table>
                </div>
            </div>
            <div id="footer">

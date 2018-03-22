@@ -18,9 +18,10 @@
                    <h3>Navigation</h3>
                    <ul>
                        <li><a class="selected" href="registeredList">Registered Users</a></li>
-                       <li><a class="selected" href="main.jsp">Homepage</a></li>
-                        <form action="logout" method="post">
-                        <button type="submit">Log out</button></form>
+                       <li><a class="selected" href="userprofile">User Profile</a></li>
+                       <li><a class="selected" href="attendance">Attendance List</a></li>
+                       <li><a class="selected" href="curriculum">Curriculum Page</a></li>
+                       <li><a class="selected" href="logout">Log out</a></li>
                    </ul>
                </div>
                <div id="main">

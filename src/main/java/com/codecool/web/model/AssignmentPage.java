@@ -5,6 +5,7 @@ public class AssignmentPage extends Page {
     private String question, answer;
     private int maxScore;
 
+
     public AssignmentPage(String title, String question, String answer, int maxScore) {
         super(title);
         this.question = question;

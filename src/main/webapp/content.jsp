@@ -25,9 +25,14 @@
                </div>
                <div id="main">
                    <h2>Content page</h2>
-                   <p1>${textcontent.title}</p1>
-                   <p2>${textcontent.content}</p2>
-                   <p2>${textcontent.published}</p2>
+                   <table>
+                   <tr>
+                   <th>${textcontent.title}</th>
+                   </tr>
+                   <tr>
+                   <td>${textcontent.content}</td>
+                   </tr>
+                   </table>
                </div>
            </div>
            <div id="footer">

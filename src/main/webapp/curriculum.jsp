@@ -22,8 +22,9 @@
                    <ul>
                        <li><a class="selected" href="registeredList">Registered Users</a></li>
                        <li><a class="selected" href="userprofile">User Profile</a></li>
-                        <li><a class="selected" href="attendance">Attendance List</a></li>
-                        <li><a class="selected" href="curriculum">Curriculum Page</a></li>
+                       <li><a class="selected" href="attendance">Attendance List</a></li>
+                       <li><a class="selected" href="curriculum">Curriculum Page</a></li>
+                       <li><a class="selected" href="logout">Log out</a></li>
                         <c:if test = "${userrole == 'Mentor'}">
                             <hr>
                             <li><a class="selected" href="text.jsp">Create Text</a></li>
@@ -35,30 +36,38 @@
                    <h2>Curriculum Page</h2>
                    <c:choose>
                    <c:when test = "${userrole == 'Student'}">
-                        Student Curriculum
                         <table>
+                        <th>Student Curriculum</th>
+                        <th>Type</th>
+                        <th>Done</th>
                         <c:forEach items="${allpages}" var="page">
                         <c:if test = "${page.published == true}">
                         <c:choose>
                           <c:when test = "${page.getClass().name == 'com.codecool.web.model.AssignmentPage'}">
                               <tr>
                                    <td><a href="question?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
+                                   <td>Assignment</td>
+                                   <td>No</td>
                              </tr>
                           </c:when>
                           <c:otherwise>
                               <tr>
                                    <td><a href="content?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
+                                   <td>Lesson</td>
+                                   <td>No Need</td>
                               </tr>
                           </c:otherwise>
                       </c:choose>
                       </c:if>
                    </c:forEach>
+                   </table>
                    </c:when>
                    <c:otherwise>
-                   </table>
-                        <form action="publish" method="get">
-                        Mentor Curriculum
+                        <form action="publish" method="post">
                         <table>
+                        <th>Mentor Curriculum</th>
+                        <th>Type</th>
+                        <th>Status</th>
                         <c:forEach items="${allpages}" var="page">
                           <c:choose>
                               <c:when test = "${page.getClass().name == 'com.codecool.web.model.AssignmentPage'}">
@@ -66,11 +75,13 @@
                                      <c:choose>
                                        <c:when test = "${page.published == false}">
                                        <td><a href="question?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
+                                       <td>Assignment</td>
                                        <td>Unpublished</td>
                                        <td><input type ="checkbox" name="name"value='${page.title}' <td>
                                        </c:when>
                                        <c:otherwise>
                                        <td><a href="question?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
+                                       <td>Assignment</td>
                                        <td>Published</td>
                                        <td><input type ="checkbox" name="name"value='${page.title}' <td>
                                        </c:otherwise>
@@ -82,11 +93,13 @@
                                   <c:choose>
                                      <c:when test = "${page.published == false}">
                                        <td><a href="content?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
+                                       <td>Lesson</td>
                                        <td>Unpublished</td>
                                        <td><input type ="checkbox" name="name"value='${page.title}' <td>
                                        </c:when>
                                        <c:otherwise>
-                                       <td><a href="question?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
+                                       <td><a href="content?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
+                                       <td>Lesson</td>
                                        <td>Published</td>
                                        <td><input type ="checkbox" name="name"value='${page.title}' <td>
                                        </c:otherwise>
@@ -96,7 +109,14 @@
                           </c:choose>
                    </c:forEach>
                    </table>
+                    <c:choose>
+                    <c:when test = "${empty allpages}">
+                    <p1>Nothing to submit yet!</p1>
+                    </c:when>
+                    <c:otherwise>
                    <input type="submit" value="Publish/UnPublish">
+                   </c:otherwise>
+                   </c:choose>
                    </c:otherwise>
                    </c:choose>
                </div>

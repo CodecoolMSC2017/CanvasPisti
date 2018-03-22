@@ -17,18 +17,19 @@
                <div id="nav">
                    <h3>Navigation</h3>
                    <ul>
-                       <li><a class="selected" href="registeredList">Registered Users</a></li>
-                       <li><a class="selected" href="userprofile">User Profile</a></li>
-                        <li><a class="selected" href="attendance">Attendance List</a></li>
-                        <li><a class="selected" href="curriculum">Curriculum Page</a></li>
+                   <li><a class="selected" href="registeredList">Registered Users</a></li>
+                   <li><a class="selected" href="userprofile">User Profile</a></li>
+                   <li><a class="selected" href="attendance">Attendance List</a></li>
+                   <li><a class="selected" href="curriculum">Curriculum Page</a></li>
+                   <li><a class="selected" href="logout">Log out</a></li>
                    </ul>
                </div>
                <div id="main">
                    <h2>Text Page</h2>
-                   <form name="createtext" method="post" action="textPage">
+                   <form action="textPage" method="post" >
                         <br><strong>Title</strong></br>
-                        <input type="text" name="title">
-                        <textarea name="content"></textarea></br>
+                        <input type="text" name="title" required>
+                        <textarea name="content" required></textarea></br>
                         <input type="submit" value="post">
                    </form>
                </div>

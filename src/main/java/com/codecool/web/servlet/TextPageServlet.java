@@ -16,10 +16,11 @@ public class TextPageServlet extends HttpServlet{
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         CurriculumService cs = new CurriculumService();
         cs.createTextPage(req,resp);
+
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req,resp);
+        req.getRequestDispatcher("curriculum.jsp").forward(req,resp);
     }
 }
