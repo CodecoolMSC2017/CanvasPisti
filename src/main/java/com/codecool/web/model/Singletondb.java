@@ -1,15 +1,24 @@
 package com.codecool.web.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Singletondb {
     private Map<String,User>userMap= new HashMap<>();
 
+    private List<Page> pageList;
+
     private volatile static Singletondb singletondbInstance;
+
+    public List<Page> getPageList() {
+        return pageList;
+    }
 
     private Singletondb() {
         userMap = new HashMap<>();
+        pageList = new ArrayList<>();
     }
 
     public static Singletondb getInstance() {

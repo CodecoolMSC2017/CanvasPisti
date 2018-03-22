@@ -1,5 +1,6 @@
 package com.codecool.web.listener;
 
+import com.codecool.web.service.CurriculumService;
 import com.codecool.web.service.RegisterService;
 
 import javax.servlet.ServletContext;

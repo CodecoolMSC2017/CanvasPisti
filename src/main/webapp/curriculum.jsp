@@ -8,6 +8,9 @@
     <title>Curriculum Page</title>
     <link rel="stylesheet" href="index.css">
 </head>
+<header>
+<p>${msg}</p>
+</header>
 <body>
    <div id="container">
            <div id="header">
@@ -23,7 +26,7 @@
                         <li><a class="selected" href="curriculum">Curriculum Page</a></li>
                         <c:if test = "${userrole == 'Mentor'}">
                             <hr>
-                            <li><a class="selected" href="createText">Create Text</a></li>
+                            <li><a class="selected" href="text.jsp">Create Text</a></li>
                             <li><a class="selected" href="createAssignment">Create Assignment</a></li>
                         </c:if>
                    </ul>
@@ -33,9 +36,25 @@
                    <c:choose>
                    <c:when test = "${userrole == 'Student'}">
                         Student Curriculum
+                        <c:forEach items="${allpages}" var="user">
+                                                   <tr>
+                                                       <td><c:out value="${user.title}" /></td>
+                                                       <td><c:out value="${user.content}" /></td>
+
+                                                   </tr>
+                                               </c:forEach>
                    </c:when>
                    <c:otherwise>
                         Mentor Curriculum
+                        <table>
+                        <c:forEach items="${allpages}" var="user">
+                                                                           <tr>
+                                                                               <td><c:out value="${user.title}" /></td>
+                                                                               <td><c:out value="${user.content}" /></td>
+
+                                                                           </tr>
+                                                                       </c:forEach>
+                                                                       </table>
                    </c:otherwise>
                    </c:choose>
                </div>
