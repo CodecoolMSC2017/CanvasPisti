@@ -54,7 +54,7 @@
                    </c:forEach>
                    </c:when>
                    <c:otherwise>
-                        <form action="check" method="post">
+                        <form action="publish" method="get">
                         Mentor Curriculum
                         <table>
                         <c:forEach items="${allpages}" var="page">
@@ -62,7 +62,8 @@
                               <c:when test = "${page.getClass().name == 'com.codecool.web.model.AssignmentPage'}">
                                   <tr>
                                        <td><a href="question?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
-                                       <td><input type ="checkbox" name="isPublished"<td>
+                                       <td><input type ="checkbox" name="isPublished" <td>
+                                       <td><input type ="hidden" name="name"value='${page.title}' <td>
                                  </tr>
                               </c:when>
                               <c:otherwise>
