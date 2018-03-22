@@ -27,6 +27,7 @@
                    <h2>Content page</h2>
                    <p1>${textcontent.title}</p1>
                    <p2>${textcontent.content}</p2>
+                   <p2>${textcontent.published}</p2>
                </div>
            </div>
            <div id="footer">

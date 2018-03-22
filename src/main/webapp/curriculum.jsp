@@ -36,6 +36,7 @@
                    <c:choose>
                    <c:when test = "${userrole == 'Student'}">
                         Student Curriculum
+                        <table>
                         <c:forEach items="${allpages}" var="page">
                         <c:if test = "${page.published == true}">
                         <c:choose>
@@ -54,6 +55,7 @@
                    </c:forEach>
                    </c:when>
                    <c:otherwise>
+                   </table>
                         <form action="publish" method="get">
                         Mentor Curriculum
                         <table>
@@ -64,13 +66,13 @@
                                      <c:choose>
                                        <c:when test = "${page.published == false}">
                                        <td><a href="question?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
-                                       <td><input type ="checkbox" name="isPublished" <td>
-                                       <td><input type ="hidden" name="name"value='${page.title}' <td>
+                                       <td>Unpublished</td>
+                                       <td><input type ="checkbox" name="name"value='${page.title}' <td>
                                        </c:when>
                                        <c:otherwise>
                                        <td><a href="question?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
-                                       <td><input type ="checkbox" name="isPublished" <td>
-                                       <td><input type ="hidden" name="name"value='${page.title}' <td>
+                                       <td>Published</td>
+                                       <td><input type ="checkbox" name="name"value='${page.title}' <td>
                                        </c:otherwise>
                                        </c:choose>
                                  </tr>
@@ -80,13 +82,13 @@
                                   <c:choose>
                                      <c:when test = "${page.published == false}">
                                        <td><a href="content?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
-                                       <td><input type ="checkbox" name="isPublished" <td>
-                                       <td><input type ="hidden" name="name"value='${page.title}' <td>
+                                       <td>Unpublished</td>
+                                       <td><input type ="checkbox" name="name"value='${page.title}' <td>
                                        </c:when>
                                        <c:otherwise>
                                        <td><a href="question?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
-                                       <td><input type ="checkbox" name="isPublished" <td>
-                                       <td><input type ="hidden" name="name"value='${page.title}' <td>
+                                       <td>Published</td>
+                                       <td><input type ="checkbox" name="name"value='${page.title}' <td>
                                        </c:otherwise>
                                        </c:choose>
                                   </tr>

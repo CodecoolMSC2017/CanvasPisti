@@ -28,6 +28,7 @@
                    <p1>${textcontent.title}</p1>
                    <p2>${textcontent.question}</p2><br>
                    <p2>${textcontent.maxScore}</p2><br>
+                   <p2>${textcontent.published}</p2>
 
                    <form action="evaluate" method="post">
                    <input type="text" name="answerAssign" placeholder="Answere">
