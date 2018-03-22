@@ -19,6 +19,7 @@
                        <li><a class="selected" href="registeredList">Registered Users</a></li>
                        <li><a class="selected" href="userprofile">User Profile</a></li>
                         <li><a class="selected" href="attendance">Attendance List</a></li>
+                        <li><a class="selected" href="logout">Log out</a></li>
                    </ul>
                </div>
                <div id="main">
