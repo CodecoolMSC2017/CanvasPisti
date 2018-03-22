@@ -36,25 +36,26 @@
                    <c:choose>
                    <c:when test = "${userrole == 'Student'}">
                         Student Curriculum
-                        <c:forEach items="${allpages}" var="user">
-                                                   <tr>
-                                                       <td><c:out value="${user.title}" /></td>
-                                                       <td><c:out value="${user.content}" /></td>
+                        <c:forEach items="${allpages}" var="page">
+                        <tr>
 
-                                                   </tr>
-                                               </c:forEach>
+                           <td><a href="content.jsp" name="title" <c:out value="${page.title}" /></a></td>
+
+                       </tr>
+                   </c:forEach>
                    </c:when>
                    <c:otherwise>
                         Mentor Curriculum
                         <table>
-                        <c:forEach items="${allpages}" var="user">
-                                                                           <tr>
-                                                                               <td><c:out value="${user.title}" /></td>
-                                                                               <td><c:out value="${user.content}" /></td>
+                        <c:forEach items="${allpages}" var="page">
+                          <tr>
 
-                                                                           </tr>
-                                                                       </c:forEach>
-                                                                       </table>
+                           <td><a href="content?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
+
+
+                       </tr>
+                   </c:forEach>
+                   </table>
                    </c:otherwise>
                    </c:choose>
                </div>
