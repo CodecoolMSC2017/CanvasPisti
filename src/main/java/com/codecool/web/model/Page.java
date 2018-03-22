@@ -2,16 +2,16 @@ package com.codecool.web.model;
 
 public abstract class Page {
 
-    protected int id;
+    protected String title;
     protected boolean published;
 
-    public Page(int id, boolean published) {
-        this.id = id;
+    public Page(String title) {
+        this.title = title;
         this.published = false;
     }
 
-    public int getId() {
-        return id;
+    public String getTitle() {
+        return title;
     }
 
     public boolean isPublished() {

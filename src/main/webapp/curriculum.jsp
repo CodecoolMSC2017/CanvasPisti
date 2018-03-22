@@ -22,6 +22,7 @@
                         <li><a class="selected" href="attendance">Attendance List</a></li>
                         <li><a class="selected" href="curriculum">Curriculum Page</a></li>
                         <c:if test = "${userrole == 'Mentor'}">
+                            <hr>
                             <li><a class="selected" href="createText">Create Text</a></li>
                             <li><a class="selected" href="createAssignment">Create Assignment</a></li>
                         </c:if>

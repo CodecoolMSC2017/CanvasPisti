@@ -2,16 +2,11 @@ package com.codecool.web.model;
 
 public class TextPage extends Page {
 
-    private String title, content;
+    private String content;
 
-    public TextPage(int id, boolean published, String title, String content) {
-        super(id, published);
-        this.title = title;
+    public TextPage(String title, String content) {
+        super(title);
         this.content = content;
-    }
-
-    public String getTitle() {
-        return title;
     }
 
     public String getContent() {
