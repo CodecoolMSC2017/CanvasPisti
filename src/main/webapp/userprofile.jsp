@@ -18,6 +18,8 @@
                    <ul>
                        <li><a class="selected" href="registeredList">Registered Users</a></li>
                        <li><a class="selected" href="main.jsp">Homepage</a></li>
+                       <li><a class="selected" href="attendance">Attendance List</a></li>
+                       <li><a class="selected" href="curriculum">Curriculum Page</a></li>
                         <form action="logout" method="post">
                         <button type="submit">Log out</button></form>
                    </ul>
