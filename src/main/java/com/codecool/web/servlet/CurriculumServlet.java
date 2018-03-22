@@ -20,10 +20,9 @@ public class CurriculumServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Singletondb db = Singletondb.getInstance();
-        List<Page> curList = db.getPageList();
         User tempUser = (User) req.getSession().getAttribute("logged");
         String userRole = tempUser.getRole();
-        req.setAttribute("allpages", curList);
+        req.setAttribute("allpages", db.getPageList());
         req.setAttribute("userrole", userRole);
         req.getRequestDispatcher("curriculum.jsp").forward(req, resp);
     }

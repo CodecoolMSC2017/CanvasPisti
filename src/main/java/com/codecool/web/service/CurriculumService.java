@@ -16,11 +16,6 @@ public final class CurriculumService {
 
     public String getText(){return "You've created a textPage.";}
 
-    private List<Page> pageList = new ArrayList<>();
-
-    public List<Page> getPageList() {
-        return pageList;
-    }
 
     public void createTextPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Singletondb db = Singletondb.getInstance();
