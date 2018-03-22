@@ -27,7 +27,7 @@
                         <c:if test = "${userrole == 'Mentor'}">
                             <hr>
                             <li><a class="selected" href="text.jsp">Create Text</a></li>
-                            <li><a class="selected" href="createAssignment">Create Assignment</a></li>
+                            <li><a class="selected" href="assignment.jsp">Create Assignment</a></li>
                         </c:if>
                    </ul>
                </div>
@@ -37,25 +37,43 @@
                    <c:when test = "${userrole == 'Student'}">
                         Student Curriculum
                         <c:forEach items="${allpages}" var="page">
-                        <tr>
-
-                           <td><a href="content.jsp" name="title" <c:out value="${page.title}" /></a></td>
-
-                       </tr>
+                        <c:choose>
+                          <c:when test = "${page.getClass().name == 'com.codecool.web.model.AssignmentPage'}">
+                              <tr>
+                                   <td><a href="question?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
+                             </tr>
+                          </c:when>
+                          <c:otherwise>
+                              <tr>
+                                   <td><a href="content?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
+                              </tr>
+                          </c:otherwise>
+                      </c:choose>
                    </c:forEach>
                    </c:when>
                    <c:otherwise>
+                        <form action="check" method="post">
                         Mentor Curriculum
                         <table>
                         <c:forEach items="${allpages}" var="page">
-                          <tr>
-
-                           <td><a href="content?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
-
-
+                          <c:choose>
+                              <c:when test = "${page.getClass().name == 'com.codecool.web.model.AssignmentPage'}">
+                                  <tr>
+                                       <td><a href="question?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
+                                       <td><input type ="checkbox" name="isPublished"<br><td>
+                                 </tr>
+                              </c:when>
+                              <c:otherwise>
+                                  <tr>
+                                       <td><a href="content?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
+                                       <td><input type ="checkbox" name="isPublished"<br><td>
+                                  </tr>
+                              </c:otherwise>
+                          </c:choose>
                        </tr>
                    </c:forEach>
                    </table>
+                   <input type="submit" value="Publish">
                    </c:otherwise>
                    </c:choose>
                </div>

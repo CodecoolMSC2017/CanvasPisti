@@ -1,9 +1,6 @@
 package com.codecool.web.service;
 
-import com.codecool.web.model.Page;
-import com.codecool.web.model.Singletondb;
-import com.codecool.web.model.TextPage;
-import com.codecool.web.model.User;
+import com.codecool.web.model.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +11,7 @@ import java.util.List;
 
 public final class CurriculumService {
 
-    public String getText(){return "You've created a textPage.";}
+    public String getText(){return "You've created a Page.";}
 
     public String emptyText(){return "You have to fill out all the fields!";}
 
@@ -31,5 +28,12 @@ public final class CurriculumService {
             req.setAttribute("msg", this.emptyText());
             req.getRequestDispatcher("curriculum.jsp").forward(req,resp);
         }
+    }
+
+    public void createAssignmentPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Singletondb db = Singletondb.getInstance();
+         Page assignmentPage = new AssignmentPage(req.getParameter("title"),req.getParameter("question"),"",Integer.parseInt(req.getParameter("maxScore")));
+         db.getPageList().add(assignmentPage);
+         req.getRequestDispatcher("curriculum.jsp").forward(req,resp);
     }
 }
