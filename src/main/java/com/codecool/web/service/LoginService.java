@@ -1,5 +1,6 @@
 package com.codecool.web.service;
 
+import com.codecool.web.model.Singletondb;
 import com.codecool.web.model.User;
 
 import javax.servlet.ServletException;
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Map;
 
 public final class LoginService {
 
@@ -16,6 +18,7 @@ public final class LoginService {
 
 
     public void checkingLogin(HttpServletRequest req, HttpServletResponse resp, RegisterService myData) throws ServletException, IOException {
+        Singletondb db = Singletondb.getInstance();
         User tempUser;
         HttpSession session = req.getSession();
         if (myData.getUserList().size() == 0) {
@@ -25,6 +28,7 @@ public final class LoginService {
             for (User user : myData.getUserList()) {
                 if (user.getEmail().equals(req.getParameter("email"))) {
                     tempUser = user;
+                    db.getUserMap().put(session.getId(),tempUser);
                     session.setAttribute("logged",tempUser);
                     req.getRequestDispatcher("main.jsp").forward(req, resp);
                 }

@@ -20,7 +20,7 @@
                        <li><a class="selected" href="registeredList">Registered Users</a></li>
                         <li><a class="selected" href="attendance">Attendance List</a></li>
                         <form action="logout" method="post">
-                                                <button type="submit">Log out</button></form>
+                        <button type="submit">Log out</button></form>
                    </ul>
                </div>
                <div id="main">

@@ -19,16 +19,15 @@ public class AttendanceServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletContext sc = getServletContext();
-
+        User tempUser = (User)req.getSession().getAttribute("logged");
         List<User> allUsers = ((RegisterService) sc.getAttribute("myDatabase")).getUserList();
         req.setAttribute("allusers", allUsers);
-        /*req.setAttribute("loginServlet", LoginService.getCurrentUser());
-        if(LoginService.getCurrentUser().getRole().equalsIgnoreCase("mentor")) {
+        if(tempUser.getRole().equalsIgnoreCase("mentor")) {
             req.getRequestDispatcher("attendance.jsp").forward(req, resp);
 
         }else{
             req.getRequestDispatcher("registeredList.jsp").forward(req, resp);
-        }*/
+        }
 
 
 
