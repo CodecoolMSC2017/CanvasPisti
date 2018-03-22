@@ -16,6 +16,8 @@ public final class CurriculumService {
 
     public String getText(){return "You've created a textPage.";}
 
+    public String emptyText(){return "You have to fill out all the fields!";}
+
 
     public void createTextPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Singletondb db = Singletondb.getInstance();
@@ -23,6 +25,10 @@ public final class CurriculumService {
             Page textPage = new TextPage(req.getParameter("title"),req.getParameter("content"));
             db.getPageList().add(textPage);
             req.setAttribute("msg", this.getText());
+            req.getRequestDispatcher("curriculum.jsp").forward(req,resp);
+        }
+        else if(req.getParameter("content") == "" && req.getParameter("title") == "" || req.getParameter("content") == "" && req.getParameter("title") == ""){
+            req.setAttribute("msg", this.emptyText());
             req.getRequestDispatcher("curriculum.jsp").forward(req,resp);
         }
     }
