@@ -19,7 +19,11 @@ public class PublishServlet extends HttpServlet{
             for (int j = 0; j <db.getPageList().size() ; j++) {
 
                 if(arr[i].equals(db.getPageList().get(j).getTitle())){
-                    db.getPageList().get(j).setPublished(true);
+                    if(!db.getPageList().get(j).isPublished()) {
+                        db.getPageList().get(j).setPublished(true);
+                    }else{
+                        db.getPageList().get(j).setPublished(false);
+                    }
                 }
             }
         }

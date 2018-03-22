@@ -61,21 +61,40 @@
                           <c:choose>
                               <c:when test = "${page.getClass().name == 'com.codecool.web.model.AssignmentPage'}">
                                   <tr>
+                                     <c:choose>
+                                       <c:when test = "${page.published == false}">
                                        <td><a href="question?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
                                        <td><input type ="checkbox" name="isPublished" <td>
                                        <td><input type ="hidden" name="name"value='${page.title}' <td>
+                                       </c:when>
+                                       <c:otherwise>
+                                       <td><a href="question?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
+                                       <td><input type ="checkbox" name="isPublished" <td>
+                                       <td><input type ="hidden" name="name"value='${page.title}' <td>
+                                       </c:otherwise>
+                                       </c:choose>
                                  </tr>
                               </c:when>
                               <c:otherwise>
                                   <tr>
+                                  <c:choose>
+                                     <c:when test = "${page.published == false}">
                                        <td><a href="content?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
-                                       <td><input type ="checkbox" name="isPublished"<td>
+                                       <td><input type ="checkbox" name="isPublished" <td>
+                                       <td><input type ="hidden" name="name"value='${page.title}' <td>
+                                       </c:when>
+                                       <c:otherwise>
+                                       <td><a href="question?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
+                                       <td><input type ="checkbox" name="isPublished" <td>
+                                       <td><input type ="hidden" name="name"value='${page.title}' <td>
+                                       </c:otherwise>
+                                       </c:choose>
                                   </tr>
                               </c:otherwise>
                           </c:choose>
                    </c:forEach>
                    </table>
-                   <input type="submit" value="Publish">
+                   <input type="submit" value="Publish/UnPublish">
                    </c:otherwise>
                    </c:choose>
                </div>
