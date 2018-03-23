@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,9 +40,11 @@
                         <tr>
                         <td>Max Score:${textcontent.maxScore}</td>
                         </tr>
+                        <c:if test = "${userrole == 'Student'}">
                         <tr>
                         <td><button type="submit" class="submitbtn">Assign</button></td>
                         </tr>
+                        </c:if>
                    </form>
                   </table>
                </div>
