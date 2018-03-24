@@ -6,9 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 public class Singletondb {
-    private Map<String,User>userMap= new HashMap<>();
+    private Map<String,User>userMap;
 
     private List<Page> pageList;
+
+    private Map<User,ArrayList<AssignmentPage>> submissions;
+
 
     private volatile static Singletondb singletondbInstance;
 
@@ -19,6 +22,7 @@ public class Singletondb {
     private Singletondb() {
         userMap = new HashMap<>();
         pageList = new ArrayList<>();
+        submissions = new HashMap<>();
     }
 
     public static Singletondb getInstance() {
@@ -38,5 +42,9 @@ public class Singletondb {
 
     public User getUserFromMap(HashMap<String,User> tempMap,String key){
        return tempMap.get(key);
+    }
+
+    public Map<User,ArrayList<AssignmentPage>> getSubmissions() {
+        return submissions;
     }
 }

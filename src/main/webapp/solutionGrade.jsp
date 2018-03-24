@@ -25,28 +25,23 @@
                    </ul>
                </div>
                <div id="main">
-                   <h2>Assignment page</h2>
-                   <table>
-                        <tr>
-                        <th>Title:${textcontent.title}</th>
-                        </tr>
-                        <tr>
-                        <td>Question:${textcontent.question}</td>
-                        </tr>
-                        <tr>
-                        <td><form action="evaluate" method="post">
-                        <input type="text" name="answerAssign" placeholder="Answer"></td>
-                        </tr>
-                        <tr>
-                        <td>Max Score:${textcontent.maxScore}</td>
-                        </tr>
-                        <c:if test = "${userrole == 'Student' && !map.get(logged).contains(textcontent)}">
-                        <tr>
-                        <td><button type="submit" class="submitbtn">Assign</button></td>
-                        </tr>
-                        </c:if>
-                   </form>
-                  </table>
+                   <h2>Grade Solutions</h2>
+                        <table>
+                            <th>Student Submiter</th>
+                            <th>Assignment Title</th>
+                            <th>Answer</th>
+                            <th>Score</th>
+                            <c:forEach items="${allsubs}" var="entry">
+                                <c:forEach items="${entry.value}" var="item">
+                                <tr>
+                                <td><c:out value="${entry.key.name}"/></td>
+                                <td><c:out value="${item.title}" /></td>
+                                <td><c:out value="${item.answer}" /></td>
+                                <td> score</td>
+                                </tr>
+                                </c:forEach>
+                            </c:forEach>
+                        <table>
                </div>
            </div>
            <div id="footer">

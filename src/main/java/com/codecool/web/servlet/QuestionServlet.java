@@ -20,6 +20,8 @@ public class QuestionServlet extends HttpServlet {
                 req.setAttribute("textcontent", db.getPageList().get(i));
                 User tempUser = (User) req.getSession().getAttribute("logged");
                 String userRole = tempUser.getRole();
+                req.setAttribute("map",db.getSubmissions());
+                req.getSession().setAttribute("assign",db.getPageList().get(i));
                 req.setAttribute("userrole", userRole);
                 req.getRequestDispatcher("question.jsp").forward(req, resp);
             }
