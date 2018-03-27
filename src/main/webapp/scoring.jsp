@@ -25,24 +25,16 @@
                    </ul>
                </div>
                <div id="main">
-                   <h2>Grade Solutions</h2>
-                     <table>
-                        <th>Student Submiter</th>
-                        <th>Assignment Title</th>
-                        <th>Answer</th>
-                        <th>Score</th>
-                        <c:forEach items="${allsubs}" var="entry">
-                            <c:forEach items="${entry.value}" var="item">
-                            <tr>
-                            <td><c:out value="${entry.key.name}"/></td>
-                            <td><a href="scoring?title=<c:out value='${item.title}' />" > <c:out value="${item.title}" /></a></td>
-
-                            <td><c:out value="${item.answer}" /></td>
-                            <td><c:out value ="${item.actualScore}"/> / <c:out value="${item.maxScore}" /></td>
-                            </tr>
-                            </c:forEach>
-                        </c:forEach>
-                    </table>
+                   <h2>Scoring Assignment</h2>
+                    <form action="scoring"  method="post" >
+                        <br><strong>Title</strong></br>
+                        <input type="text" name="title" required>
+                        <br><strong>Question</strong></br>
+                        <input type="text" name="question" required>
+                        <br><strong>Max Score</strong></br>
+                        <input type="number" name="maxScore" required>
+                        <input type="submit" value="post">
+                   </form>
                </div>
            </div>
            <div id="footer">

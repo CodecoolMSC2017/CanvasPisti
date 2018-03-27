@@ -22,6 +22,7 @@ public class CurriculumServlet extends HttpServlet {
         Singletondb db = Singletondb.getInstance();
         User tempUser = (User) req.getSession().getAttribute("logged");
         String userRole = tempUser.getRole();
+
         req.setAttribute("allpages", db.getPageList());
         req.setAttribute("userrole", userRole);
         req.getRequestDispatcher("curriculum.jsp").forward(req, resp);

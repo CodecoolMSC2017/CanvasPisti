@@ -40,7 +40,7 @@
                         <tr>
                         <td>Max Score:${textcontent.maxScore}</td>
                         </tr>
-                        <c:if test = "${userrole == 'Student' && !map.get(logged).contains(textcontent)}">
+                        <c:if test = "${userrole == 'Student' && num == 0}">
                         <tr>
                         <td><button type="submit" class="submitbtn">Assign</button></td>
                         </tr>
