@@ -17,11 +17,15 @@ public class SolutionGradeServlet extends HttpServlet{
         Singletondb db = Singletondb.getInstance();
         System.out.println(db.getSubmissions().size());
         req.setAttribute("allsubs", db.getSubmissions());
+
         req.getRequestDispatcher("solutionGrade.jsp").forward(req, resp);
+
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+
+      doGet(req,resp);
+
     }
 }
