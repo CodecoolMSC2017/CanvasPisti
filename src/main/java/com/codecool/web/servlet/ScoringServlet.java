@@ -36,5 +36,6 @@ public class ScoringServlet extends HttpServlet {
         Singletondb db = Singletondb.getInstance();
         User tmpUser=(User)req.getAttribute("student");
         AssignmentPage aPage = (AssignmentPage)req.getAttribute("aPage");
+        req.getRequestDispatcher("scoring.jsp").forward(req, resp);
     }
 }

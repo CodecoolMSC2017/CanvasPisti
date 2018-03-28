@@ -42,9 +42,9 @@
                             <td><c:out value="${item.answer}" /></td>
                             <td><c:out value ="${item.actualScore}"/> / <c:out value="${item.maxScore}" /></td>
                             </tr>
-
                             </c:forEach>
-                        <table>
+                        </c:forEach>
+                    </table>
                </div>
            </div>
            <div id="footer">
