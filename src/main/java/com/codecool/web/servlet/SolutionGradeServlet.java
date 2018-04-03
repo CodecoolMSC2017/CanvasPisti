@@ -15,7 +15,6 @@ public class SolutionGradeServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Singletondb db = Singletondb.getInstance();
-        System.out.println(db.getSubmissions().size());
         req.setAttribute("allsubs", db.getSubmissions());
 
         req.getRequestDispatcher("solutionGrade.jsp").forward(req, resp);

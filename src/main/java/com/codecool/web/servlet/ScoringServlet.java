@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 @WebServlet("/scoring")
 public class ScoringServlet extends HttpServlet {
@@ -34,8 +35,17 @@ public class ScoringServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Singletondb db = Singletondb.getInstance();
-        User tmpUser=(User)req.getAttribute("student");
-        AssignmentPage aPage = (AssignmentPage)req.getAttribute("aPage");
-        req.getRequestDispatcher("scoring.jsp").forward(req, resp);
+        for(Map.Entry<User,ArrayList<AssignmentPage>> entry: db.getSubmissions().entrySet()){
+            ArrayList<AssignmentPage> pages= db.getSubmissions().get(entry.getKey());
+            for(AssignmentPage asign:pages) {
+                if (asign.equals(req.getAttribute("item"))){
+                    System.out.println("megvan");
+                    req.setAttribute("aPage", asign);
+                    req.getRequestDispatcher("scoring.jsp").forward(req, resp);
+                }else{
+                    System.out.println("nem jo");
+                }
+            }
+        }
     }
 }

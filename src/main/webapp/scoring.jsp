@@ -26,7 +26,6 @@
                </div>
                <div id="main">
                    <h2>Scoring Assignment</h2>
-                    <form action="scoring"  method="post" >
                       <table>
                       <tr>
                       <th>Title:${aPage.title}</th>
@@ -38,12 +37,13 @@
                        <td>Answer:${aPage.answer}</td>
                       </tr>
                       <tr>
+                       <form action="scoring"  method="post" >
                       <td><input type="number" name="actualScore" min="${aPage.actualScore}" max="${aPage.maxScore}" style="width: 40px" required></td>
                       </tr>
                       <tr>
                       <td><button type="submit" class="submitbtn">Assign</button></td>
+                       </form>
                       </tr>
-                   </form>
                    </table>
                </div>
            </div>

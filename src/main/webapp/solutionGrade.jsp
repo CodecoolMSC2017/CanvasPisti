@@ -36,9 +36,9 @@
                             <c:forEach items="${entry.value}" var="item">
                             <tr>
                             <td><c:out value="${entry.key.name}" /></td>
-                            <input type="hidden" name="student" value="${entry.key}">
-                            <td><a href="scoring.jsp"><c:out value="${item.title}" /></a></td>
-                            <input type="hidden" name="aPage" value="${item}">
+
+                            <td><a href="scoring?item=<c:out value='${item}' />" > <c:out value="${item.title}" /></a></td>
+
                             <td><c:out value="${item.answer}" /></td>
                             <td><c:out value ="${item.actualScore}"/> / <c:out value="${item.maxScore}" /></td>
                             </tr>
