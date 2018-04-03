@@ -12,6 +12,8 @@ public class Singletondb {
 
     private Map<User,ArrayList<AssignmentPage>> submissions;
 
+    private Map<String,Map<User,String>> attend;
+
 
     private volatile static Singletondb singletondbInstance;
 
@@ -23,6 +25,7 @@ public class Singletondb {
         userMap = new HashMap<>();
         pageList = new ArrayList<>();
         submissions = new HashMap<>();
+        attend = new HashMap<>();
     }
 
     public static Singletondb getInstance() {
@@ -41,10 +44,12 @@ public class Singletondb {
     }
 
     public User getUserFromMap(HashMap<String,User> tempMap,String key){
-       return tempMap.get(key);
+        return tempMap.get(key);
     }
 
     public Map<User,ArrayList<AssignmentPage>> getSubmissions() {
         return submissions;
     }
+
+    public Map<String, Map<User, String>> getAttend() { return attend;}
 }

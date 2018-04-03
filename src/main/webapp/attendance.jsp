@@ -7,6 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main</title>
     <link rel="stylesheet" href="index.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>jQuery UI Datepicker - Default functionality</title>
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      <link rel="stylesheet" href="/resources/demos/style.css">
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <script>
+      $( function() {
+        $( "#datepicker" ).datepicker({ minDate:-60 , maxDate: "+0D" });
+      } );
+      </script>
 </head>
 <body>
    <div id="container">
@@ -29,6 +40,7 @@
                     <p1>${loginServlet.name}</p1>
                        <form action="check" method="post">
                    <table>
+                       <p>Date: <input type="text" id="datepicker" name="datepicker"></p>
                        <tr>
                            <th>Name</th>
                            <th>Is Here</th>
@@ -37,7 +49,7 @@
                        <c:if test = "${user.role == 'Student'}">
                            <tr>
                                <td><c:out value="${user.name}" /></td>
-                               <td><input type="checkbox" name="Was Here" <br> </td>
+                               <td><input type="checkbox" name="Was Here" value="${user.name}" <br> </td>
                            </tr>
                           </c:if>
                        </form>

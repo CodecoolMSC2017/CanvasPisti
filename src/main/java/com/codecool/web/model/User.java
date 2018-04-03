@@ -12,6 +12,7 @@ public class User {
         this.name = name;
         this.email = email;
         this.role = role;
+
     }
 
     public String getName() {
@@ -33,5 +34,6 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
+
 
 }
