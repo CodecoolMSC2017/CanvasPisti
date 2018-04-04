@@ -5,6 +5,7 @@ public class AssignmentPage extends Page {
     private String question, answer;
     private int maxScore;
     private int actualScore;
+    private int minimumScore;
 
 
     public AssignmentPage(String title, String question, String answer, int maxScore) {
@@ -13,6 +14,7 @@ public class AssignmentPage extends Page {
         this.answer = answer;
         this.maxScore = maxScore;
         actualScore = 0;
+        minimumScore = 0;
     }
     public String getQuestion() {
         return question;
@@ -36,5 +38,9 @@ public class AssignmentPage extends Page {
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public int getMinimumScore() {
+        return minimumScore;
     }
 }

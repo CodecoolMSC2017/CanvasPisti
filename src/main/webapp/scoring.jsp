@@ -42,7 +42,7 @@
                       </tr>
                       <tr>
                        <form action="scoring"  method="post" >
-                      <td><input type="number" name="actualScore" min="${aPage.actualScore}" max="${aPage.maxScore}" style="width: 40px" required></td>
+                      <td><input type="number" name="actualScore" min="${aPage.minimumScore}" max="${aPage.maxScore}" style="width: 40px" required></td>
                       </tr>
                       <tr>
                       <td><button type="submit" class="submitbtn">Assign</button></td>
