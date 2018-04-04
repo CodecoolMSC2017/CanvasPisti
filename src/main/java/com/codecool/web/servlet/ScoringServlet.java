@@ -18,40 +18,27 @@ public class ScoringServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Singletondb db = Singletondb.getInstance();
-
-        int actualScore = (int)req.getAttribute("actualScore");
-        User tmpUser=(User)req.getAttribute("student");
-        AssignmentPage aPage = (AssignmentPage)req.getAttribute("aPage");
-        ArrayList<AssignmentPage> pages= db.getSubmissions().get(tmpUser);
-        for (AssignmentPage page:pages) {
-            if(page.getTitle().equals(aPage.getTitle())){
-                page.setActualScore(actualScore);
-            }
-        }
-        resp.sendRedirect("solutionGrade");
+        int actualScore = Integer.parseInt(req.getParameter("actualScore"));
+        AssignmentPage page1 = (AssignmentPage) req.getSession().getAttribute("aPage");
+        page1.setActualScore(actualScore);
+        req.getRequestDispatcher("solutionGrade").forward(req, resp);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Singletondb db = Singletondb.getInstance();
         for (Map.Entry<User, ArrayList<AssignmentPage>> entry : db.getSubmissions().entrySet()) {
-            System.out.println(req.getParameter("student"));
-            System.out.println(req.getParameter("item"));
             if (entry.getKey().getEmail().equals(req.getParameter("student"))) {
-                System.out.println("fasza");
+                req.setAttribute("student", entry.getKey());
+                req.getSession().setAttribute("student",entry.getKey());
                 ArrayList<AssignmentPage> pages = db.getSubmissions().get(entry.getKey());
                 for (AssignmentPage asign : pages) {
                     if (asign.getTitle().equals(req.getParameter("item"))) {
-                        System.out.println("megvan");
                         req.setAttribute("aPage", asign);
+                        req.getSession().setAttribute("aPage",asign);
                         req.getRequestDispatcher("scoring.jsp").forward(req, resp);
-                    } else {
-                        System.out.println("nem jo");
                     }
                 }
-            } else {
-                System.out.println("nem fasza");
             }
         }
     }

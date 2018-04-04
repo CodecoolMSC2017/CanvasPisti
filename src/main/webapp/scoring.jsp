@@ -29,7 +29,10 @@
                    <h2>Scoring Assignment</h2>
                       <table>
                       <tr>
-                      <th>Title:${aPage.title}</th>
+                      <th>Title:${student.email}</th>
+                      </tr>
+                      <tr>
+                      <td>Title:${aPage.title}</td>
                       </tr>
                       <tr>
                       <td>Question:${aPage.question}</td>
