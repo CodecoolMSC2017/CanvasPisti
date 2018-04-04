@@ -31,11 +31,12 @@
                            <th>Name</th>
                            <th>Email</th>
                            <th>Role</th>
+
                        </tr>
                        <c:forEach items="${allusers}" var="user">
                            <tr>
                                <td><c:out value="${user.name}" /></td>
-                               <td><c:out value="${user.email}" /></td>
+                               <td><a href="mailto:${user.email}?Subject=" target="_top">Send E-Mail</a></td>
                                <td><c:out value="${user.role}" /></td>
                            </tr>
                        </c:forEach>

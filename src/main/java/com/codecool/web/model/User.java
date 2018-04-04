@@ -2,11 +2,13 @@ package com.codecool.web.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class User {
     private String name;
     private String email;
     private String role;
+    private Map<String,Boolean> userAttendanceMap;
 
     public User(String name, String email, String role) {
         this.name = name;
@@ -35,5 +37,8 @@ public class User {
         this.role = role;
     }
 
+    public Map<String, Boolean> getUserAttendanceMap() {
+        return userAttendanceMap;
+    }
 
 }
