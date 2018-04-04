@@ -19,13 +19,14 @@
                    <ul>
                        <li><a class="selected" href="registeredList">Registered Users</a></li>
                        <li><a class="selected" href="userprofile">User Profile</a></li>
-                       <li><a class="selected" href="attendance">Attendance List</a></li>
-                       <li><a class="selected" href="curriculum">Curriculum Page</a></li>
-                       <li><a class="selected" href="logout">Log out</a></li>
+                        <li><a class="selected" href="attendance">Attendance List</a></li>
+                        <li><a class="selected" href="curriculum">Curriculum Page</a></li>
+                        <li><a class="selected" href="logout">Log out</a></li>
                    </ul>
                </div>
                <div id="main">
                    <h2>Grade Solutions</h2>
+
                      <table>
                         <th>Student Submiter</th>
                         <th>Assignment Title</th>
@@ -34,15 +35,9 @@
                         <c:forEach items="${allsubs}" var="entry">
                             <c:forEach items="${entry.value}" var="item">
                             <tr>
-
-                            <td><c:out value="${entry.key.name}"/></td>
-                            <td><a href="scoring?title=<c:out value='${item.title}' />" > <c:out value="${item.title}" /></a></td>
-
-
                             <td><c:out value="${entry.key.name}" /></td>
-                            <input type="hidden" name="student" value="${entry.key}">
-                            <td><a href="scoring"><c:out value="${item.title}" /></a></td>
-                            <input type="hidden" name="aPage" value="${item}">
+
+                            <td><a href="scoring?item=<c:out value='${item.title}'/>&student=<c:out value='${entry.key.email}' />" > <c:out value="${item.title}" /></a></td>
                             <td><c:out value="${item.answer}" /></td>
                             <td><c:out value ="${item.actualScore}"/> / <c:out value="${item.maxScore}" /></td>
                             </tr>

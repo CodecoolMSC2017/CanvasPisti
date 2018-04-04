@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,15 +27,25 @@
                </div>
                <div id="main">
                    <h2>Scoring Assignment</h2>
-                    <form action="scoring"  method="post" >
-                        <br><strong>Title</strong></br>
-                        <input type="text" name="title" required>
-                        <br><strong>Question</strong></br>
-                        <input type="text" name="question" required>
-                        <br><strong>Max Score</strong></br>
-                        <input type="number" name="maxScore" required>
-                        <input type="submit" value="post">
-                   </form>
+                      <table>
+                      <tr>
+                      <th>Title:${aPage.title}</th>
+                      </tr>
+                      <tr>
+                      <td>Question:${aPage.question}</td>
+                      </tr>
+                      <tr>
+                       <td>Answer:${aPage.answer}</td>
+                      </tr>
+                      <tr>
+                       <form action="scoring"  method="post" >
+                      <td><input type="number" name="actualScore" min="${aPage.actualScore}" max="${aPage.maxScore}" style="width: 40px" required></td>
+                      </tr>
+                      <tr>
+                      <td><button type="submit" class="submitbtn">Assign</button></td>
+                       </form>
+                      </tr>
+                   </table>
                </div>
            </div>
            <div id="footer">
