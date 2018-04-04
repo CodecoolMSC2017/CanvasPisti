@@ -25,18 +25,27 @@
                    </ul>
                </div>
                <div id="main">
+
                    <h2>Attandance List page</h2>
+                   <form action="modify" method="post">
                    <table>
+                   <th>Name</th>
+                   <th>Was here</th>
+                   <th>Modify</th>
                    <c:forEach items="${dateandname}" var="anamelist">
                    <tr>
                    <c:if test = "${anamelist.key.role == 'Student'}">
-                   <td><c:out value="${anamelist.key.name}"/>
-                       <c:out value="${anamelist.value}"/>
-                   </td>
+                   <td><c:out value="${anamelist.key.name}"/></td>
+                   <td><c:out value="${anamelist.value}"/></td>
+                   <td><input type="checkbox" name="name" value="${anamelist.key.email}"</td>
                    </tr>
+
+
                    </c:if>
                    </c:forEach>
                    </table>
+                   <input type="submit" value="Change">
+                   </form>
                </div>
            </div>
            <div id="footer">

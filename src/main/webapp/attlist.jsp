@@ -22,6 +22,7 @@
                         <li><a class="selected" href="attendance">Attendance List</a></li>
                         <li><a class="selected" href="curriculum">Curriculum Page</a></li>
                         <li><a class="selected" href="logout">Log out</a></li>
+
                    </ul>
                </div>
 
