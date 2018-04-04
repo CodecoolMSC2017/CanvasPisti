@@ -6,37 +6,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curriculum Page</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="att.css">
+
 </head>
 <body>
-   <div id="container">
-           <div id="header">
-               <h1>Canvas for Everybody</h1>
-           </div>
-           <div id="content">
-               <div id="nav">
-                   <h3>Navigation</h3>
+   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+              <div id="mySidenav" class="sidenav">
+
+                  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
                    <ul>
                    <li><a class="selected" href="registeredList">Registered Users</a></li>
                    <li><a class="selected" href="userprofile">User Profile</a></li>
                    <li><a class="selected" href="attendance">Attendance List</a></li>
                    <li><a class="selected" href="curriculum">Curriculum Page</a></li>
                    <li><a class="selected" href="logout">Log out</a></li>
-                   </ul>
+                  </ul>
                </div>
-               <div id="main">
+
+         <div id="main">
+           <div id="header">
+               <h1>Canvas for Everybody</h1>
+           </div>
+
                    <h2>Text Page</h2>
                    <form action="textPage" method="post" >
-                        <br><strong>Title</strong></br>
-                        <input type="text" name="title" required>
-                        <textarea name="content" required></textarea></br>
-                        <input type="submit" value="post">
+                        <table align="center">
+                        <tr>
+                            <td><br><strong>Title</strong></br>
+                        <input type="text" name="title" required></td>
+                        </tr>
+                        <tr>
+                        <td>
+                        <textarea name="content" required></textarea></br></td>
+                         </tr>
                    </form>
-               </div>
-           </div>
+                   </table>
+                   <input type="submit" value="post">
            <div id="footer">
                Copyright &copy; 2018 CanvasPisti
            </div>
        </div>
+       <script src="myscript.js"></script>
 </body>
 </html>

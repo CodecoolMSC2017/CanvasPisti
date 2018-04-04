@@ -6,44 +6,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="att.css">
+
 </head>
 <body>
-   <div id="container">
+   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+      <div id="mySidenav" class="sidenav">
+
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+           <ul>
+           <li><a class="selected" href="registeredList">Registered Users</a></li>
+           <li><a class="selected" href="userprofile">User Profile</a></li>
+           <li><a class="selected" href="attendance">Attendance List</a></li>
+           <li><a class="selected" href="curriculum">Curriculum Page</a></li>
+           <li><a class="selected" href="logout">Log out</a></li>
+          </ul>
+       </div>
+
+             <div id="main">
+
            <div id="header">
                <h1>Canvas for Everybody</h1>
            </div>
-           <div id="content">
-               <div id="nav">
-                   <h3>Navigation</h3>
-                   <ul>
-                       <li><a class="selected" href="registeredList">Registered Users</a></li>
-                       <li><a class="selected" href="userprofile">User Profile</a></li>
-                        <li><a class="selected" href="attendance">Attendance List</a></li>
-                        <li><a class="selected" href="curriculum">Curriculum Page</a></li>
-                        <li><a class="selected" href="logout">Log out</a></li>
 
-                   </ul>
-               </div>
+               <h2>Attendance list</h2>
+               <table align="center">
+               <tr>
+                  <th>Time</th>
+               </tr>
 
-               <div id="main">
-                   <h2>Attendance list</h2>
-                   <table>
-                   <tr>
-                      <th>Time</th>
-                   </tr>
-
-                   <c:forEach items="${att}" var="time">
-                   <tr>
-                    <td><a href="check?key=<c:out value='${time.key}' />" >${time.key}</a></td>
-                   </tr>
-                   </c:forEach>
-                   </table>
-               </div>
+               <c:forEach items="${att}" var="time">
+               <tr>
+                <td><a href="check?key=<c:out value='${time.key}' />" >${time.key}</a></td>
+               </tr>
+               </c:forEach>
+               </table>
            </div>
+
            <div id="footer">
                Copyright &copy; 2018 CanvasPisti
            </div>
        </div>
+       <script src="myscript.js"></script>
 </body>
 </html>
