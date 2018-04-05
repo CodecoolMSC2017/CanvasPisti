@@ -21,7 +21,7 @@
             <ul>
             <li><a class="selected" href="registeredList">Registered Users</a></li>
             <li><a class="selected" href="userprofile">User Profile</a></li>
-            <li><a class="selected" href="attendance">Attendance List</a></li>
+            <li><a class="selected" href="curriculumAtt.jsp">Attendance List</a></li>
             <li><a class="selected" href="curriculum">Curriculum Page</a></li>
             <li><a class="selected" href="logout">Log out</a></li>
             <c:if test = "${userrole == 'Mentor'}">
@@ -29,7 +29,7 @@
                 <li><a class="selected" href="text.jsp">Create Text</a></li>
                 <li><a class="selected" href="assignment.jsp">Create Assignment</a></li>
                 <li><a class="selected" href="solutionGrade">Grade Solutions</a></li>
-                <li><a class="selected" href="curriculumAtt.jsp">Attendance list</a></li>
+                <li><a class="selected" href="attendance">Attendance list</a></li>
             </c:if>
             <c:if test = "${userrole == 'Student'}">
                 <hr>

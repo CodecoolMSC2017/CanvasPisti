@@ -19,7 +19,7 @@
           <ul>
           <li><a class="selected" href="registeredList">Registered Users</a></li>
           <li><a class="selected" href="userprofile">User Profile</a></li>
-          <li><a class="selected" href="attendance">Attendance List</a></li>
+          <li><a class="selected" href="curriculumAtt.jsp">Attendance List</a></li>
           <li><a class="selected" href="curriculum">Curriculum Page</a></li>
           <li><a class="selected" href="logout">Log out</a></li>
          </ul>
@@ -31,6 +31,7 @@
            </div>
 
                <h2>Attandance List page</h2>
+               <c:if test = "${role == 'Mentor'}">
                <form action="modify" method="post">
                <table align="center">
                <th>Name</th>
@@ -50,6 +51,27 @@
                </table>
                <input type="submit" value="Change">
                </form>
+
+               </c:if>
+               <c:if test = "${role == 'Student'}">
+
+                 <table align="center">
+                  <th>Name</th>
+                  <th>Was here</th>
+                  <c:forEach items="${dateandname}" var="anamelist">
+                  <tr>
+                  <c:if test = "${anamelist.key.role == 'Student'}">
+                  <td><c:out value="${anamelist.key.name}"/></td>
+                  <td><c:out value="${anamelist.value}"/></td>
+                  </tr>
+
+
+                  </c:if>
+                  </c:forEach>
+                  </table>
+
+                  <a href="main.jsp"><input class="MyButton" button type="button" style="background-color:green"  value="Go Back"></button></a>
+                  </c:if>
            </div>
 
            <div id="footer">
