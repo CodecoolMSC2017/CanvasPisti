@@ -3,6 +3,7 @@ package com.codecool.web.servlet;
 import com.codecool.web.model.AssignmentPage;
 import com.codecool.web.model.Singletondb;
 import com.codecool.web.model.User;
+import com.codecool.web.service.ScoringService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,19 +28,8 @@ public class ScoringServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Singletondb db = Singletondb.getInstance();
-        for (Map.Entry<User, ArrayList<AssignmentPage>> entry : db.getSubmissions().entrySet()) {
-            if (entry.getKey().getEmail().equals(req.getParameter("student"))) {
-                req.setAttribute("student", entry.getKey());
-                req.getSession().setAttribute("student",entry.getKey());
-                ArrayList<AssignmentPage> pages = db.getSubmissions().get(entry.getKey());
-                for (AssignmentPage asign : pages) {
-                    if (asign.getTitle().equals(req.getParameter("item"))) {
-                        req.setAttribute("aPage", asign);
-                        req.getSession().setAttribute("aPage",asign);
-                        req.getRequestDispatcher("scoring.jsp").forward(req, resp);
-                    }
-                }
-            }
-        }
+        ScoringService ss = new ScoringService();
+        ss.Scoring(req, db);
+        req.getRequestDispatcher("scoring.jsp").forward(req, resp);
     }
 }
