@@ -26,7 +26,7 @@
                     </br>
 
                     <input class="MyButton" type="submit" value="Log in!" />
-                    <a href="index.jsp"><button type="button" value="Go Back">Go Back</button></a>
+                    <a href="index.jsp"><input class="MyButton" button type="button" style="background-color:green"  value="Go Back"></button></a>
                 </form></br>
             </div>
 

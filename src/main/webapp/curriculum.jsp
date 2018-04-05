@@ -29,6 +29,8 @@
                 <li><a class="selected" href="text.jsp">Create Text</a></li>
                 <li><a class="selected" href="assignment.jsp">Create Assignment</a></li>
                 <li><a class="selected" href="solutionGrade">Grade Solutions</a></li>
+                <li><a class="selected" href="curriculumAtt.jsp">Attendance list</a></li>
+
             </c:if>
            </ul>
         </div>

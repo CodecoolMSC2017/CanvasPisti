@@ -42,12 +42,21 @@ public class CheckAttendanceServlet extends HttpServlet {
                 }
 
             }
-        if (presentStudents.length != 0) {
-            studentAttend.put(time, attMap);
-            req.setAttribute("att", studentAttend);
-        }
-        }
+            if (presentStudents.length != 0) {
+                studentAttend.put(time, attMap);
+                req.setAttribute("att", studentAttend);
+            }
 
+        }else {
+            for (int i = 0; i < attList.size(); i++) {
+                attMap.put(attList.get(i), "wasnt here");
+
+            }if (presentStudents == null) {
+                studentAttend.put(time, attMap);
+                req.setAttribute("att", studentAttend);
+            }
+        }
+        req.getSession().setAttribute("attMapIstvan",studentAttend);
         req.getRequestDispatcher("attlist.jsp").forward(req, resp);
     }
 
