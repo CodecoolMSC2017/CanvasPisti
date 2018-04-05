@@ -24,6 +24,7 @@
             <li><a class="selected" href="curriculumAtt.jsp">Attendance List</a></li>
             <li><a class="selected" href="curriculum">Curriculum Page</a></li>
             <li><a class="selected" href="snake.html">Chill</a></li>
+            <li><a class="selected" href="main.jsp">Main Page</a></li>
             <li><a class="selected" href="logout">Log out</a></li>
             <c:if test = "${userrole == 'Mentor'}">
                 <hr>
