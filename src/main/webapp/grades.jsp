@@ -34,19 +34,14 @@
                      <table align="center">
                         <th>Student Submiter</th>
                         <th>Assignment Title</th>
-                        <th>Answer</th>
                         <th>Score</th>
-                        <c:forEach items="${allsubs}" var="entry">
-                            <c:forEach items="${entry.value}" var="item">
+                            <c:forEach items="${userassigns}" var="item">
                             <tr>
-                            <td><c:out value="${entry.key.name}" /></td>
-
-                            <td><a href="scoring?item=<c:out value='${item.title}'/>&student=<c:out value='${entry.key.email}' />" > <c:out value="${item.title}" /></a></td>
-                            <td><c:out value="${item.answer}" /></td>
+                            <td>${username}</td>
+                            <td><c:out value="${item.title}" /></td>
                             <td><c:out value ="${item.actualScore}"/> / <c:out value="${item.maxScore}" /></td>
                             </tr>
                             </c:forEach>
-                        </c:forEach>
                     </table>
                </div>
 
