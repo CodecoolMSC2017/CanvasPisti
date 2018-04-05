@@ -31,7 +31,6 @@
                 <li><a class="selected" href="assignment.jsp">Create Assignment</a></li>
                 <li><a class="selected" href="solutionGrade">Grade Solutions</a></li>
                 <li><a class="selected" href="attendance">Do Attendance</a></li>
-                <li><a class="selected" href="snake.html">Chill</a></li>
             </c:if>
             <c:if test = "${userrole == 'Student'}">
                 <hr>

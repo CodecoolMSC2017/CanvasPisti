@@ -39,6 +39,8 @@
 <script>
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
+var score = 0;
+var msg = "your score was "
 var grid = 16;
 var snake = {
   x: 160,
@@ -96,6 +98,7 @@ function loop() {
     // snake ate apple
     if (cell.x === apple.x && cell.y === apple.y) {
       snake.maxCells++;
+      score++;
       apple.x = getRandomInt(0, 25) * grid;
       apple.y = getRandomInt(0, 25) * grid;
     }
@@ -104,6 +107,8 @@ function loop() {
 
       // collision. reset game
       if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
+        window.alert(msg+score);
+        score= 0;
         snake.x = 160;
         snake.y = 160;
         snake.cells = [];
