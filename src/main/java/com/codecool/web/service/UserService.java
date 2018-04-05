@@ -82,10 +82,8 @@ public final class UserService {
         }
     }
 
-    public void checkAttendance(HttpServletRequest req, HttpServletResponse resp,ServletContext sc ) throws ServletException, IOException {
-
+    public void checkAttendance(HttpServletRequest req,ServletContext sc, Singletondb db) throws ServletException, IOException {
         Map<User, String> attMap = new HashMap<>();
-        Singletondb db = Singletondb.getInstance();
         studentAttend = db.getAttend();
         String time = req.getParameter("datepicker");
         req.getSession().setAttribute("datepicker2", time);
@@ -118,7 +116,6 @@ public final class UserService {
             }
         }
         req.getSession().setAttribute("attMapIstvan",studentAttend);
-        req.getRequestDispatcher("attlist.jsp").forward(req, resp);
     }
 
     public void handleQuestion(HttpServletRequest req, Singletondb db, User tempUser, String userRole, int number) {

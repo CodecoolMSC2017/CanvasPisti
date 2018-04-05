@@ -30,7 +30,7 @@
            </div>
 
                <h2>Content page</h2>
-               <table>
+               <table align="center">
                <tr>
                <th>${textcontent.title}</th>
                </tr>
