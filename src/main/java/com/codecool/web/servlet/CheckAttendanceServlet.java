@@ -24,7 +24,7 @@ public class CheckAttendanceServlet extends HttpServlet {
         ServletContext sc = getServletContext();
         Singletondb db = Singletondb.getInstance();
         UserService us = new UserService();
-        us.checkAttendance(req, resp, sc, db);
+        us.checkAttendance(req, sc, db);
 
         req.getRequestDispatcher("curriculumAtt.jsp").forward(req, resp);
     }
