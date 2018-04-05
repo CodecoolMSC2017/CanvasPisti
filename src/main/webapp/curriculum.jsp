@@ -30,7 +30,10 @@
                 <li><a class="selected" href="assignment.jsp">Create Assignment</a></li>
                 <li><a class="selected" href="solutionGrade">Grade Solutions</a></li>
                 <li><a class="selected" href="curriculumAtt.jsp">Attendance list</a></li>
-
+            </c:if>
+            <c:if test = "${userrole == 'Student'}">
+                <hr>
+                <li><a class="selected" href="grades">Grades</a></li>
             </c:if>
            </ul>
         </div>
@@ -45,7 +48,6 @@
                         <table align="center">
                         <th>Student Curriculum</th>
                         <th>Type</th>
-                        <th>Done</th>
                         <c:forEach items="${allpages}" var="page">
                         <c:if test = "${page.published == true}">
                         <c:choose>
@@ -53,14 +55,12 @@
                               <tr>
                                    <td><a href="question?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
                                    <td>Assignment</td>
-                                   <td>No</td>
                              </tr>
                           </c:when>
                           <c:otherwise>
                               <tr>
                                    <td><a href="content?title=<c:out value='${page.title}' />" > <c:out value="${page.title}" /></a></td>
                                    <td>Lesson</td>
-                                   <td>No Need</td>
                               </tr>
                           </c:otherwise>
                       </c:choose>
