@@ -1,13 +1,19 @@
 package com.codecool.web.service;
 
+import com.codecool.web.model.AssignmentPage;
+import com.codecool.web.model.Singletondb;
 import com.codecool.web.model.User;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.*;
 
 public final class UserService {
+
+    Map<String, Map<User, String>> studentAttend;
 
     public void changeUserAttr(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User tempUser = (User) req.getSession().getAttribute("logged");
@@ -39,4 +45,101 @@ public final class UserService {
             req.getRequestDispatcher("main.jsp").forward(req, resp);
         }
     }
+
+    public void modifyAttendance(HttpServletRequest req, Singletondb db, String[] arr) {
+        if (arr != null) {
+            for (Map.Entry<String, Map<User, String>> entry : db.getAttend().entrySet()) {
+                if (entry.getKey().equals(req.getSession().getAttribute("datepicker2"))) {
+                    for (Map.Entry<User, String> entry2 : db.getAttend().get(entry.getKey()).entrySet()) {
+                        if (Arrays.asList(arr).contains(entry2.getKey().getEmail())) {
+                            if (entry2.getValue().equals("was here")) {
+                                entry2.setValue("wasnt here");
+                            } else if (entry2.getValue().equals("wasnt here")) {
+                                entry2.setValue("was here");
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    public void publishTasks(Singletondb db, String[] arr) {
+        if(arr != null) {
+            for (int i = 0; i < arr.length; i++) {
+                for (int j = 0; j < db.getPageList().size(); j++) {
+
+                    if (arr[i].equals(db.getPageList().get(j).getTitle())) {
+                        if (!db.getPageList().get(j).isPublished()) {
+                            db.getPageList().get(j).setPublished(true);
+                        } else {
+                            db.getPageList().get(j).setPublished(false);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void checkAttendance(HttpServletRequest req, HttpServletResponse resp,ServletContext sc ) throws ServletException, IOException {
+
+        Map<User, String> attMap = new HashMap<>();
+        Singletondb db = Singletondb.getInstance();
+        studentAttend = db.getAttend();
+        String time = req.getParameter("datepicker");
+        req.getSession().setAttribute("datepicker2", time);
+        List<User> attList = ((RegisterService) sc.getAttribute("myDatabase")).getUserList();
+        String[] presentStudents = req.getParameterValues("Was Here");
+        if(presentStudents!=null) {
+            for (int i = 0; i < attList.size(); i++) {
+                for (int j = 0; j < presentStudents.length; j++) {
+                    if (attList.get(i).getName().equals(presentStudents[j])) {
+                        attMap.put(attList.get(i), "was here");
+                        break;
+                    } else {
+                        attMap.put(attList.get(i), "wasnt here");
+                    }
+                }
+
+            }
+            if (presentStudents.length != 0) {
+                studentAttend.put(time, attMap);
+                req.setAttribute("att", studentAttend);
+            }
+
+        }else {
+            for (int i = 0; i < attList.size(); i++) {
+                attMap.put(attList.get(i), "wasnt here");
+
+            }if (presentStudents == null) {
+                studentAttend.put(time, attMap);
+                req.setAttribute("att", studentAttend);
+            }
+        }
+        req.getSession().setAttribute("attMapIstvan",studentAttend);
+        req.getRequestDispatcher("attlist.jsp").forward(req, resp);
+    }
+
+    public void handleQuestion(HttpServletRequest req, Singletondb db, User tempUser, String userRole, int number) {
+        for (int i = 0; i <db.getPageList().size() ; i++) {
+            if(req.getParameter("title").equals(db.getPageList().get(i).getTitle())) {
+                req.setAttribute("textcontent", db.getPageList().get(i));
+                req.getSession().setAttribute("assign",db.getPageList().get(i));
+                ArrayList<AssignmentPage> pagez = db.getSubmissions().get(tempUser);
+                if(pagez != null) {
+                    for (AssignmentPage page : pagez) {
+                        if (page.getTitle().equals(db.getPageList().get(i).getTitle())) {
+                            number++;
+                        }
+                    }
+                }
+                req.setAttribute("num",number);
+                req.setAttribute("userrole", userRole);
+
+            }
+        }
+    }
+
 }
+
