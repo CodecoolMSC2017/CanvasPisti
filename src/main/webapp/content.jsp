@@ -24,20 +24,24 @@
               </ul>
            </div>
 
-         <div id="main">
-
            <div id="header">
                <h1>Canvas for Everybody</h1>
            </div>
 
+             <div id="main">
+
                <h2>Content page</h2>
                <table align="center">
+               <thead>
                <tr>
-               <th>${textcontent.title}</th>
+               <th><b>${textcontent.title}</b></th>
                </tr>
+               </thead>
+               <tbody>
                <tr>
                <td>${textcontent.content}</td>
                </tr>
+               </tbody>
                </table>
            </div>
 

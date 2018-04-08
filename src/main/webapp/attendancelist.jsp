@@ -34,18 +34,23 @@
                <h2>Attandance List page</h2>
                <c:if test = "${role == 'Mentor'}">
                <form action="modify" method="post">
+
                <table align="center">
-               <th>Name</th>
-               <th>Was here</th>
-               <th>Modify</th>
+               <thead>
+                   <th>Name</th>
+                   <th>Was here</th>
+                   <th>Modify</th>
+               <thead>
+
                <c:forEach items="${dateandname}" var="anamelist">
+               <tbody>
                <tr>
                <c:if test = "${anamelist.key.role == 'Student'}">
                <td><c:out value="${anamelist.key.name}"/></td>
                <td><c:out value="${anamelist.value}"/></td>
                <td><input type="checkbox" name="name" value="${anamelist.key.email}"</td>
                </tr>
-
+                </tbody>
 
                </c:if>
                </c:forEach>

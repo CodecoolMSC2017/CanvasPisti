@@ -32,9 +32,12 @@
                   <div id="main">
                    <h2>Assignment page</h2>
                    <table align="center">
+                   <thead>
                         <tr>
                         <th>Title:${textcontent.title}</th>
                         </tr>
+                   </thead>
+                   <tbody>
                         <tr>
                         <td>Question:${textcontent.question}</td>
                         </tr>
@@ -49,7 +52,8 @@
                         <tr>
                         <td><button type="submit" class="submitbtn">Assign</button></td>
                         </tr>
-                        </c:if>
+                    </tbody>
+                    </c:if>
                    </form>
                   </table>
                </div>

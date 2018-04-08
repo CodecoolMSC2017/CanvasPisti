@@ -34,6 +34,7 @@
 
                <h2>Scoring Assignment</h2>
                   <table align="center">
+                  <tbody>
                   <tr>
                   <th>Title:${student.email}</th>
                   </tr>
@@ -54,6 +55,7 @@
                   <td><button type="submit" class="submitbtn">Assign</button></td>
                    </form>
                   </tr>
+                  </tbody>
                </table>
 
            </div>

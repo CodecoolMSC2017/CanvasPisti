@@ -25,10 +25,12 @@
                   </ul>
                </div>
 
+         <div id="header">
+            <h1>Canvas for Everybody</h1>
+        </div>
+
+
          <div id="main">
-           <div id="header">
-               <h1>Canvas for Everybody</h1>
-           </div>
 
                    <h2>Text Page</h2>
                    <form action="textPage" method="post" >
@@ -44,10 +46,12 @@
                    </form>
                    </table>
                    <input type="submit" value="post">
-           <div id="footer">
-               Copyright &copy; 2018 CanvasPisti
+
            </div>
+       <div id="footer">
+           Copyright &copy; 2018 CanvasPisti
        </div>
+
        <script src="myscript.js"></script>
 </body>
 </html>

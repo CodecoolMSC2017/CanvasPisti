@@ -33,15 +33,18 @@
 
                <h2>Attendance list</h2>
                <table align="center">
+               <thead>
                <tr>
                   <th>Time</th>
                </tr>
+               </thead>
 
                <c:forEach items="${att}" var="time">
+               <tbody>
                <tr>
                 <td><a href="check?key=<c:out value='${time.key}' />" >${time.key}</a></td>
-
                </tr>
+               </tbody>
                </c:forEach>
                </table>
                <a href="main.jsp"><input class="MyButton" button type="button" style="background-color:green"  value="Go Back"></button></a>

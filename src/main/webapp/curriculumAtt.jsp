@@ -25,22 +25,27 @@
           </ul>
        </div>
 
-             <div id="main">
 
            <div id="header">
                <h1>Canvas for Everybody</h1>
            </div>
 
+           <div id="main">
+
                <h2>Attendance list</h2>
                <table align="center">
+               <thead>
                <tr>
                   <th>Time</th>
                </tr>
+               </thead>
 
                <c:forEach items="${sessionScope.attMapIstvan}" var="time">
+               <tbody>
                <tr>
                 <td><a href="check?key=<c:out value='${time.key}' />" >${time.key}</a></td>
                </tr>
+               </tbody>
                </c:forEach>
                </table>
            </div>

@@ -73,12 +73,16 @@
                    <c:otherwise>
                         <form action="publish" method="post">
                         <table align="center">
-                        <th>Mentor Curriculum</th>
-                        <th>Type</th>
-                        <th>Status</th>
+                            <thead>
+                                <th>Mentor Curriculum</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>P/UnP</th>
+                            </thead>
                         <c:forEach items="${allpages}" var="page">
                           <c:choose>
                               <c:when test = "${page.getClass().name == 'com.codecool.web.model.AssignmentPage'}">
+                                  <tbody>
                                   <tr>
                                      <c:choose>
                                        <c:when test = "${page.published == false}">
@@ -113,10 +117,12 @@
                                        </c:otherwise>
                                        </c:choose>
                                   </tr>
+                                <tbody>
                               </c:otherwise>
                           </c:choose>
                    </c:forEach>
                    </table>
+                   <br>
                     <c:choose>
                     <c:when test = "${empty allpages}">
                     <p1>Nothing to submit yet!</p1>

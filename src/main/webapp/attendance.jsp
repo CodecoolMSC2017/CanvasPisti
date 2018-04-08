@@ -38,16 +38,20 @@
                        <form action="check" method="post">
                    <table align="center">
                        <p>Date: <input type="text" id="datepicker" name="datepicker"></p>
+                       <thead>
                        <tr>
                            <th>Name</th>
                            <th>Is Here</th>
                        </tr>
+                       </thead>
                        <c:forEach items="${allusers}" var="user">
                        <c:if test = "${user.role == 'Student'}">
+                       <tbody>
                            <tr>
                                <td><c:out value="${user.name}" /></td>
                                <td><input type="checkbox" name="Was Here" value="${user.name}" <br> </td>
                            </tr>
+                       </tbody>
                           </c:if>
                        </form>
                        </c:forEach>

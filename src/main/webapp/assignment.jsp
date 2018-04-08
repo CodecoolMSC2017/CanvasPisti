@@ -26,20 +26,36 @@
           </ul>
        </div>
 
-         <div id="main">
-
            <div id="header">
                <h1>Canvas for Everybody</h1>
            </div>
 
+           <div id="main">
+
                <h2>Assignment Page</h2>
                <form action="assignmentServlet"  method="post" >
-                    <br><strong>Title</strong></br>
+               <table align="center">
+                <tbody>
+                  <tr><td>
+                    <br><b>Title</b></br>
+                  </tr></td>
+                  <tr><td>
                     <input type="text" name="title" required>
-                    <br><strong>Question</strong></br>
+                  </tr></td>
+                  <tr><td>
+                    <br><b>Question</b></br>
+                  </tr></td>
+                  <tr><td>
                     <input type="text" name="question" required>
+                  </tr></td>
+                  <tr><td>
                     <br><strong>Max Score</strong></br>
+                  </tr></td>
+                  <tr><td>
                     <input type="number" name="maxScore" required>
+                  </tr></td>
+                </tbody>
+               </table>
                     <input type="submit" value="post">
                </form>
            </div>

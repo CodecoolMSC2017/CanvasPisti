@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <title>Login LMS</title>
 
-    <link href="index.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="index.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Rammetto+One|Rubik+Mono+One" rel="stylesheet">
 
 </head>

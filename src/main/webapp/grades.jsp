@@ -33,9 +33,12 @@
                    <h2>Grade Solutions</h2>
 
                      <table align="center">
+                     <thead>
                         <th>Student Submiter</th>
                         <th>Assignment Title</th>
                         <th>Score</th>
+                     </thead>
+                     <tbody>
                             <c:forEach items="${userassigns}" var="item">
                             <tr>
                             <td>${username}</td>
@@ -43,6 +46,7 @@
                             <td><c:out value ="${item.actualScore}"/> / <c:out value="${item.maxScore}" /></td>
                             </tr>
                             </c:forEach>
+                     </tbody>
                     </table>
                </div>
 

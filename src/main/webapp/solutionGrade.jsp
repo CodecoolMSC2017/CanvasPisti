@@ -33,12 +33,15 @@
                    <h2>Grade Solutions</h2>
 
                      <table align="center">
+                     <thead>
                         <th>Student Submiter</th>
                         <th>Assignment Title</th>
                         <th>Answer</th>
                         <th>Score</th>
+                     </thead>
                         <c:forEach items="${allsubs}" var="entry">
                             <c:forEach items="${entry.value}" var="item">
+                            <tbody>
                             <tr>
                             <td><c:out value="${entry.key.name}" /></td>
 
@@ -46,6 +49,7 @@
                             <td><c:out value="${item.answer}" /></td>
                             <td><c:out value ="${item.actualScore}"/> / <c:out value="${item.maxScore}" /></td>
                             </tr>
+                            <tbody>
                             </c:forEach>
                         </c:forEach>
                     </table>

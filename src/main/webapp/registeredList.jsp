@@ -25,25 +25,29 @@
           </ul>
        </div>
 
-         <div id="main">
            <div id="header">
                <h1>Canvas for Everybody</h1>
            </div>
 
+           <div id="main">
+
                <h2>Registered Users</h2>
                <table align="center">
+               <thead>
                    <tr>
-                       <th>Name</th>
-                       <th>Email</th>
-                       <th>Role</th>
-
+                       <th><b>Name</b></th>
+                       <th><b>Email</b></th>
+                       <th><b>Role</b></th>
                    </tr>
+               </thead>
                    <c:forEach items="${allusers}" var="user">
+                   <tbody>
                        <tr>
                            <td><c:out value="${user.name}" /></td>
                            <td><a href="mailto:${user.email}?Subject=" target="_top">Send E-Mail</a></td>
                            <td><c:out value="${user.role}" /></td>
                        </tr>
+                   </tbody>
                    </c:forEach>
                </table>
            </div>

@@ -26,25 +26,38 @@
           </ul>
        </div>
 
-         <div id="main">
            <div id="header">
                <h1>Canvas for Everybody</h1>
            </div>
 
+           <div id="main">
                <h2>User Profile</h2>
                <form action="edit" method="post">
-                     Username:
+               <table align="center">
+                    <tbody>
+                    <tr><td>
+                     <b>Username:</b>
+                     </tr></td>
+                     <tr><td>
                      <input type="text" name="name" value="${username}"><br>
-                     <p>Current role: ${userrole}</p>
+                     </tr></td>
+                     <tr><td>
+                     <p><b>Current role:</b> ${userrole}</p>
+                     </tr></td>
+                     <tr><td>
                      <c:choose>
                      <c:when test ="${userrole =='Mentor'}">
                      <input type="radio" name="role" value="Student"> Student<br>
                      </c:when>
                      <c:otherwise>
                      <input type="radio" name="role" value="Mentor"> Mentor<br>
+                     </tr></td>
                      </c:otherwise>
                      </c:choose>
-                     <p>Email: ${useremail}</p><br>
+                     <tr><td>
+                     <p><b>Email:</b> ${useremail}</p><br>
+                     <tr><td>
+                     </table>
                      <input type="submit" value="Submit/Homepage">
                    </form>
            </div>

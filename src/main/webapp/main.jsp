@@ -24,19 +24,20 @@
            </ul>
         </div>
 
-      <div id="main">
+
            <div id="header">
                   <h1>Canvas for Everybody</h1>
               </div>
 
-              <div id="about">
-                   <h2>Welcome to CanvasPisti Learning Management System App</h2>
-              </div>
+              <h3 align="center" color="black">Welcome to CanvasPisti Learning Management System App</h3>
 
-          <div id="footer">
+              <div id="mainAbout">
+
+            </div>
+          <div id="footer" >
               Copyright &copy; 2018 CanvasPisti
           </div>
-      </div>
+
 
       <script src="myscript.js"></script>
 </body>
