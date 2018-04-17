@@ -18,12 +18,10 @@ public final class CurriculumService {
     public synchronized void createTextPage(HttpServletRequest req, HttpServletResponse resp,Connection connection) throws ServletException, IOException, SQLException {
         PageDao pageDao = new DatabasePageDao(connection);
         CurriculumServiceInt curriculumServiceInt =new SimpleCurriculumService(pageDao) ;
-      //  Singletondb db = Singletondb.getInstance();
         if(req.getParameter("content") != "" && req.getParameter("title") != ""){
             Page textPage = new TextPage(req.getParameter("title"),false,req.getParameter("content"));
             textPage.setId(pageDao.getListSize());
             pageDao.addTextPage((TextPage)textPage);
-           // db.getPageList().add(textPage);
 
             resp.sendRedirect("curriculum");
         }
@@ -39,7 +37,6 @@ public final class CurriculumService {
          Page assignmentPage = new AssignmentPage(req.getParameter("title"),false,req.getParameter("question"),"",Integer.parseInt(req.getParameter("maxScore")));
          assignmentPage.setId(pageDao.getListSize());
          pageDao.addAssignment((AssignmentPage)assignmentPage);
-       //  db.getPageList().add(assignmentPage);
          resp.sendRedirect("curriculum");
     }
     public AssignmentPage getAssPage(){

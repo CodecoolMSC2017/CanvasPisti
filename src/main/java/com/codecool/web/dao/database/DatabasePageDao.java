@@ -133,7 +133,6 @@ public class DatabasePageDao extends AbstractDao implements PageDao {
     private TextPage fetchTextPage(ResultSet resultSet) throws SQLException {
         String title = resultSet.getString("title");
         boolean ispublished = resultSet.getBoolean("is_published");
-        System.out.println(resultSet.getBoolean("is_published") + "txt");
 
         String content = resultSet.getString("content");
         return new TextPage(title, ispublished, content);
@@ -142,7 +141,6 @@ public class DatabasePageDao extends AbstractDao implements PageDao {
     private AssignmentPage fetchAssPage(ResultSet resultSet) throws SQLException {
         String title = resultSet.getString("title");
         boolean ispublished = resultSet.getBoolean("is_published");
-        System.out.println(resultSet.getBoolean("is_published") + "ASSS");
         String question = resultSet.getString("question");
         String answer = resultSet.getString("answer");
         int maxscore = resultSet.getInt("max_score");
@@ -165,9 +163,7 @@ public class DatabasePageDao extends AbstractDao implements PageDao {
                             System.out.println(allpages.get(j).isPublished()+"Shit");
                             if (!allpages.get(j).isPublished()) {
                                 setTextPublished(true, allpages.get(j).getTitle());
-                                System.out.println("not dákó");
                             } else {
-                                System.out.println("Dákó");
                                 setTextPublished(false, allpages.get(j).getTitle());
                             }
                         } else if (allpages.get(j) instanceof AssignmentPage) {
