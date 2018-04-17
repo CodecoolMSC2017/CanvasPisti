@@ -6,9 +6,9 @@ public abstract class Page {
     protected boolean published;
     protected int id;
 
-    public Page(String title) {
+    public Page(String title,boolean published) {
         this.title = title;
-        this.published = false;
+        this.published = published;
         id=0;
     }
 

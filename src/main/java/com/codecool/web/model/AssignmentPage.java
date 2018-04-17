@@ -8,8 +8,8 @@ public class AssignmentPage extends Page {
     private int minimumScore;
 
 
-    public AssignmentPage(String title, String question, String answer, int maxScore) {
-        super(title);
+    public AssignmentPage(String title,boolean ispublished, String question, String answer, int maxScore) {
+        super(title,ispublished);
         this.question = question;
         this.answer = answer;
         this.maxScore = maxScore;

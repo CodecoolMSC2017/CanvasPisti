@@ -15,6 +15,7 @@ CREATE TABLE users (
 CREATE TABLE text_page (
     title TEXT PRIMARY KEY,
     content TEXT NOT NULL,
+    is_published BOOLEAN NOT NULL
 	CONSTRAINT content_not_empty CHECK (content <> '')
 );
 
@@ -24,7 +25,9 @@ CREATE TABLE assignment_page (
     answer TEXT ,
     max_score INTEGER NOT NULL,
     minimum_score INTEGER NOT NULL,
-    actual_score INTEGER
+    actual_score INTEGER,
+    is_published BOOLEAN NOT NULL
+
 );
 
 
@@ -33,13 +36,13 @@ INSERT INTO users (email, name,role) VALUES
 	('user2@user2', 'user2','Student'), -- 2
 	('user2@user3', 'user3','Student'); -- 3
 
-INSERT INTO text_page (title,content) VALUES
-	('Python','Hello World!'),   -- 1
-	('Java','Waste Recycling');  -- 2
+INSERT INTO text_page (title,content,is_published) VALUES
+	('Python','Hello World!','false'),   -- 1
+	('Java','Waste Recycling','false');  -- 2
 
 
-INSERT INTO assignment_page (title, question, max_score,minimum_score) VALUES
-	('Python feladat','Hogy van a Hello World pythonban?',12,0),           -- 1
-	('Java feladat','Hogy van a Hello World Javaban?',12,0);          -- 1
+INSERT INTO assignment_page (title, question, max_score,minimum_score,is_published) VALUES
+	('Python feladat','Hogy van a Hello World pythonban?',12,0,'false'),           -- 1
+	('Java feladat','Hogy van a Hello World Javaban?',12,0,'false');          -- 1
 
 

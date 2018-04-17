@@ -18,7 +18,7 @@ public final class SubmissionService {
         int number = 0;
         User tempUser = (User)req.getSession().getAttribute("logged");
         AssignmentPage page1 = (AssignmentPage)req.getSession().getAttribute("assign");
-        AssignmentPage newPage = new AssignmentPage(page1.getTitle(),page1.getQuestion(),page1.getAnswer(),page1.getMaxScore());
+        AssignmentPage newPage = new AssignmentPage(page1.getTitle(),page1.isPublished(),page1.getQuestion(),page1.getAnswer(),page1.getMaxScore());
         newPage.setAnswer(req.getParameter("answerAssign"));
         if(db.getSubmissions().containsKey(tempUser)){
             ArrayList<AssignmentPage> pagez = db.getSubmissions().get(tempUser);

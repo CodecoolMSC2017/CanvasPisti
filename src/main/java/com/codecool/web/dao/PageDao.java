@@ -4,7 +4,9 @@ import com.codecool.web.model.AssignmentPage;
 import com.codecool.web.model.Page;
 import com.codecool.web.model.TextPage;
 
+import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public interface PageDao {
@@ -22,4 +24,8 @@ public interface PageDao {
     List<Page> listAllPages()throws SQLException;
 
     int getListSize()throws SQLException;
+
+    void publishTask(ArrayList<Page> allpages,String[]arr) throws SQLException;
+
+ //   void setTaskPublished()
 }

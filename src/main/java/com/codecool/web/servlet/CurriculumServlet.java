@@ -36,6 +36,7 @@ public class CurriculumServlet extends AbstractServlet {
             ArrayList<Page>allpages = new ArrayList<>();
             allpages.addAll(pageDao.listAllText());
             allpages.addAll(pageDao.listAllAss());
+          //  req.getSession().setAttribute("alltxtasspage",allpages);
             req.setAttribute("allpages", allpages);
             req.setAttribute("userrole", userRole);
             req.getRequestDispatcher("curriculum.jsp").forward(req, resp);

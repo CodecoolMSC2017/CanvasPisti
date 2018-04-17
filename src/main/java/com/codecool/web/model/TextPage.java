@@ -4,8 +4,8 @@ public class TextPage extends Page {
 
     private String content;
 
-    public TextPage(String title, String content) {
-        super(title);
+    public TextPage(String title,boolean ispublished, String content) {
+        super(title,ispublished);
         this.content = content;
     }
 
