@@ -165,9 +165,7 @@ public class DatabasePageDao extends AbstractDao implements PageDao {
                             System.out.println(allpages.get(j).isPublished()+"Shit");
                             if (!allpages.get(j).isPublished()) {
                                 setTextPublished(true, allpages.get(j).getTitle());
-                                System.out.println("not dákó");
                             } else {
-                                System.out.println("Dákó");
                                 setTextPublished(false, allpages.get(j).getTitle());
                             }
                         } else if (allpages.get(j) instanceof AssignmentPage) {

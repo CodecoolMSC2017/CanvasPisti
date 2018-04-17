@@ -29,14 +29,11 @@ public class CurriculumServlet extends AbstractServlet {
         try (Connection connection = getConnection(req.getServletContext())) {
             PageDao pageDao = new DatabasePageDao(connection);
             CurriculumServiceInt curriculumServiceInt = new SimpleCurriculumService(pageDao);
-           // Singletondb db = Singletondb.getInstance();
             User tempUser = (User) req.getSession().getAttribute("logged");
             String userRole = tempUser.getRole();
-            //System.out.println(userRole);
             ArrayList<Page>allpages = new ArrayList<>();
             allpages.addAll(pageDao.listAllText());
             allpages.addAll(pageDao.listAllAss());
-          //  req.getSession().setAttribute("alltxtasspage",allpages);
             req.setAttribute("allpages", allpages);
             req.setAttribute("userrole", userRole);
             req.getRequestDispatcher("curriculum.jsp").forward(req, resp);
