@@ -1,6 +1,7 @@
 package com.codecool.web.service;
 
 import com.codecool.web.model.AssignmentPage;
+import com.codecool.web.model.Page;
 import com.codecool.web.model.Singletondb;
 import com.codecool.web.model.User;
 
@@ -118,11 +119,11 @@ public final class UserService {
        req.getSession().setAttribute("attMapIstvan",studentAttend);
     }
 
-    public void handleQuestion(HttpServletRequest req, Singletondb db, User tempUser, String userRole, int number) {
-        for (int i = 0; i <db.getPageList().size() ; i++) {
-            if(req.getParameter("title").equals(db.getPageList().get(i).getTitle())) {
-                req.setAttribute("textcontent", db.getPageList().get(i));
-                req.getSession().setAttribute("assign",db.getPageList().get(i));
+    public void handleQuestion(HttpServletRequest req, ArrayList<Page> pageList , User tempUser, String userRole, int number) {
+        for (int i = 0; i <pageList.size() ; i++) {
+            if(req.getParameter("title").equals(pageList.get(i).getTitle())) {
+                req.setAttribute("textcontent", pageList.get(i));
+                req.getSession().setAttribute("assign",pageList.get(i));
                 ArrayList<AssignmentPage> pagez = db.getSubmissions().get(tempUser);
                 if(pagez != null) {
                     for (AssignmentPage page : pagez) {

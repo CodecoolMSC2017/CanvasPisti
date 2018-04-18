@@ -27,5 +27,5 @@ public interface PageDao {
 
     void publishTask(ArrayList<Page> allpages,String[]arr) throws SQLException;
 
- //   void setTaskPublished()
+    void findAllAssignmentByUser(String email)throws SQLException;
 }

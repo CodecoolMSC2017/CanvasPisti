@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS users;
 
 
 CREATE TABLE users (
-    email text NOT NULL check (email ~ '.*?@.*'),
+    email text NOT NULL check (email ~ '.*?@.*') PRIMARY KEY,
     name TEXT NOT NULL,
     role TEXT NOT NULL
 );
@@ -30,6 +30,16 @@ CREATE TABLE assignment_page (
 
 );
 
+CREATE TABLE user_ass (
+    student_email TEXT,
+    assignment_title TEXT,
+    PRIMARY KEY (student_email, assignment_title),
+    FOREIGN KEY(student_email) REFERENCES users(email),
+    FOREIGN KEY(assignment_title) REFERENCES assignment_page(title)
+
+
+);
+
 
 INSERT INTO users (email, name,role) VALUES
 	('user1@user1', 'user1','Mentor'), -- 1
@@ -45,4 +55,6 @@ INSERT INTO assignment_page (title, question, max_score,minimum_score,is_publish
 	('Python feladat','Hogy van a Hello World pythonban?',12,0,'false'),           -- 1
 	('Java feladat','Hogy van a Hello World Javaban?',12,0,'false');          -- 1
 
+INSERT INTO user_ass(student_email,assignment_title) VALUES
+('user1@user1','Python feladat');
 

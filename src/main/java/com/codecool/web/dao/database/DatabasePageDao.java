@@ -4,11 +4,14 @@ import com.codecool.web.dao.PageDao;
 import com.codecool.web.model.AssignmentPage;
 import com.codecool.web.model.Page;
 import com.codecool.web.model.TextPage;
+import com.codecool.web.model.User;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DatabasePageDao extends AbstractDao implements PageDao {
     public DatabasePageDao(Connection connection) {
@@ -180,6 +183,7 @@ public class DatabasePageDao extends AbstractDao implements PageDao {
 
     }
 
+
     public void setTextPublished(boolean published, String title) throws SQLException {
         String sql = "UPDATE text_page SET is_published = ? where title = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -201,4 +205,12 @@ public class DatabasePageDao extends AbstractDao implements PageDao {
     }
 
 
+    @Override
+    public void findAllAssignmentByUser(String email) throws SQLException {
+        Map<User,ArrayList<AssignmentPage>> submissionList = new HashMap<>();
+        List<User> usrList = new ArrayList<>();
+        String sql = "SELECT * from user_ass\n" +
+                "left join assignment_page on assignment_page.title = user_ass.student_email WHERE student_email = 'user1@user1'";
+
+    }
 }
