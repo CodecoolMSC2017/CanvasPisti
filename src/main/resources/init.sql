@@ -64,6 +64,4 @@ INSERT INTO assignment_page (title, question, max_score,minimum_score,is_publish
 	('Python feladat','Hogy van a Hello World pythonban?',12,0,'false'),           -- 1
 	('Java feladat','Hogy van a Hello World Javaban?',12,0,'false');          -- 1
 
-INSERT INTO user_ass(student_email,assignment_title) VALUES
-('user1@user1','Python feladat');
 
