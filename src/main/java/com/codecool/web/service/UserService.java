@@ -82,41 +82,9 @@ public final class UserService {
         }
     }
 
-    public void checkAttendance(HttpServletRequest req,ServletContext sc, Singletondb db) throws ServletException, IOException {
-        Map<String, Map<User, String>> studentAttend=db.getAttend();
-        Map<User, String> attMap = new HashMap<>();
-        String time = req.getParameter("datepicker");
-        req.getSession().setAttribute("datepicker2", time);
-        List<User> attList = ((RegisterService) sc.getAttribute("myDatabase")).getUserList();
+    public String[] checkAttendance(HttpServletRequest req) {
         String[] presentStudents = req.getParameterValues("Was Here");
-        if(presentStudents!=null) {
-            for (int i = 0; i < attList.size(); i++) {
-                for (int j = 0; j < presentStudents.length; j++) {
-                    if (attList.get(i).getName().equals(presentStudents[j])) {
-                        attMap.put(attList.get(i), "was here");
-                        break;
-                    } else {
-                        attMap.put(attList.get(i), "wasnt here");
-                    }
-                }
-
-            }
-            if (presentStudents.length != 0) {
-                studentAttend.put(time, attMap);
-                req.setAttribute("att", studentAttend);
-            }
-
-        }else {
-            for (int i = 0; i < attList.size(); i++) {
-                attMap.put(attList.get(i), "wasnt here");
-
-            }if (presentStudents == null) {
-                studentAttend.put(time, attMap);
-                req.setAttribute("att", studentAttend);
-            }
-        }
-        //req.setAttribute("attMapIstvan",studentAttend);
-       req.getSession().setAttribute("attMapIstvan",studentAttend);
+        return presentStudents;
     }
 
     public void handleQuestion(HttpServletRequest req, ArrayList<Page> pageList , User tempUser, String userRole, int number) {

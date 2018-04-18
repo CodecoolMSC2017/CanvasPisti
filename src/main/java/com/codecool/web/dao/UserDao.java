@@ -15,4 +15,6 @@ public interface UserDao {
     void changeName(String name, String email)throws SQLException;
 
     void changeRole(String role, String email)throws SQLException;
+
+    void checkAttendance(String date, String email)throws SQLException;
 }

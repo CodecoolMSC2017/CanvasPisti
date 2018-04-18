@@ -96,5 +96,19 @@ public final class DatabaseUserDao extends AbstractDao implements UserDao {
         }
     }
 
+    @Override
+    public void checkAttendance(String date, String email) throws SQLException {
+        String sql = "INSERT INTO attendance (att_date,email) VALUES (?,?)";
+        try(PreparedStatement statement = connection.prepareStatement(sql)){
+            statement.setString(1, date);
+            statement.setString(2, email);
+            executeInsert(statement);
+
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+
+
 }
 

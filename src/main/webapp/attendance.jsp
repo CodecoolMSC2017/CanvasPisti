@@ -49,7 +49,7 @@
                        <tbody>
                            <tr>
                                <td><c:out value="${user.name}" /></td>
-                               <td><input type="checkbox" name="Was Here" value="${user.name}" <br> </td>
+                               <td><input type="checkbox" name="Was Here" value="${user.email}" <br> </td>
                            </tr>
                        </tbody>
                           </c:if>

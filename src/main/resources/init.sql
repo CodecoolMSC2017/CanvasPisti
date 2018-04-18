@@ -3,6 +3,7 @@
 */
 DROP TABLE IF EXISTS assignment_page;
 DROP TABLE IF EXISTS text_page;
+DROP TABLE IF EXISTS attendance;
 DROP TABLE IF EXISTS users;
 
 
@@ -38,6 +39,10 @@ CREATE TABLE user_ass (
     FOREIGN KEY(assignment_title) REFERENCES assignment_page(title)
 
 
+CREATE TABLE attendance (
+    att_date TEXT NOT NULL,
+    email TEXT NOT NULL,
+    FOREIGN KEY (email) REFERENCES users(email)
 );
 
 
