@@ -40,6 +40,7 @@ CREATE TABLE user_ass (
     PRIMARY KEY (student_email, assignment_title),
     FOREIGN KEY(student_email) REFERENCES users(email),
     FOREIGN KEY(assignment_title) REFERENCES assignment_page(title)
+    );
 
 
 CREATE TABLE attendance (
