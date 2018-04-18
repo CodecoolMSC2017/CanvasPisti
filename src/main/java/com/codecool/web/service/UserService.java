@@ -87,7 +87,7 @@ public final class UserService {
         return presentStudents;
     }
 
-    public void handleQuestion(HttpServletRequest req, ArrayList<Page> pageList , User tempUser, String userRole, int number) {
+  /*  public void handleQuestion(HttpServletRequest req, ArrayList<Page> pageList , User tempUser, String userRole, int number) {
         for (int i = 0; i <pageList.size() ; i++) {
             if(req.getParameter("title").equals(pageList.get(i).getTitle())) {
                 req.setAttribute("textcontent", pageList.get(i));
@@ -105,7 +105,7 @@ public final class UserService {
 
             }
         }
-    }
+    }*/
 
 }
 

@@ -1,5 +1,6 @@
 package com.codecool.web.dao;
 
+import com.codecool.web.model.AssignmentPage;
 import com.codecool.web.model.User;
 
 import java.sql.SQLException;
@@ -16,5 +17,9 @@ public interface UserDao {
 
     void changeRole(String role, String email)throws SQLException;
 
+
     void checkAttendance(String date, String email)throws SQLException;
+
+    void addSubmission(User user , AssignmentPage assPage)throws SQLException;
+
 }

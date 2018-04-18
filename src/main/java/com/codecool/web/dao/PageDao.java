@@ -28,4 +28,6 @@ public interface PageDao {
     void publishTask(ArrayList<Page> allpages,String[]arr) throws SQLException;
 
     void findAllAssignmentByUser(String email)throws SQLException;
+
+    Page findByAssignmentTitle(String title) throws SQLException;
 }

@@ -48,7 +48,7 @@
                         <tr>
                         <td>Max Score:${textcontent.maxScore}</td>
                         </tr>
-                        <c:if test = "${userrole == 'Student' && num == 0}">
+                        <c:if test = "${userrole == 'Student'}">
                         <tr>
                         <td><button type="submit" class="submitbtn">Assign</button></td>
                         </tr>

@@ -213,4 +213,19 @@ public class DatabasePageDao extends AbstractDao implements PageDao {
                 "left join assignment_page on assignment_page.title = user_ass.student_email WHERE student_email = 'user1@user1'";
 
     }
+    public Page findByAssignmentTitle(String title) throws SQLException {
+        if (title == null || "".equals(title)) {
+            throw new IllegalArgumentException("Email cannot be null or empty");
+        }
+        String sql = "SELECT * FROM assignment_page WHERE title = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, title);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    return fetchAssPage(resultSet);
+                }
+            }
+        }
+        return null;
+    }
 }

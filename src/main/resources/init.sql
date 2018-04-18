@@ -1,6 +1,7 @@
 /*
     Database initialization script that runs on every web-application redeployment.
 */
+DROP TABLE IF EXISTS user_ass;
 DROP TABLE IF EXISTS assignment_page;
 DROP TABLE IF EXISTS text_page;
 DROP TABLE IF EXISTS attendance;
@@ -34,6 +35,8 @@ CREATE TABLE assignment_page (
 CREATE TABLE user_ass (
     student_email TEXT,
     assignment_title TEXT,
+    answer TEXT,
+    actual_score INTEGER,
     PRIMARY KEY (student_email, assignment_title),
     FOREIGN KEY(student_email) REFERENCES users(email),
     FOREIGN KEY(assignment_title) REFERENCES assignment_page(title)
