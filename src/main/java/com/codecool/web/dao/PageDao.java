@@ -3,10 +3,12 @@ package com.codecool.web.dao;
 import com.codecool.web.model.AssignmentPage;
 import com.codecool.web.model.Page;
 import com.codecool.web.model.TextPage;
+import com.codecool.web.model.User;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public interface PageDao {
@@ -30,4 +32,7 @@ public interface PageDao {
     void findAllAssignmentByUser(String email)throws SQLException;
 
     Page findByAssignmentTitle(String title) throws SQLException;
+
+    public HashMap<User,ArrayList<AssignmentPage>> getSubmissionList()throws SQLException;
 }
+

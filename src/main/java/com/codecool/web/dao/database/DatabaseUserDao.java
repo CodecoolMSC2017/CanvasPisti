@@ -111,16 +111,22 @@ public final class DatabaseUserDao extends AbstractDao implements UserDao {
         }
 
     }
-            public void addSubmission (User user, AssignmentPage assPage) throws SQLException {
-                String sql = "Insert into user_ass (student_email,assignment_title,answer,actual_score) values (?,?,?,?)";
-                try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                    statement.setString(1, user.getEmail());
-                    statement.setString(2, assPage.getTitle());
-                    statement.setString(3, assPage.getAnswer());
-                    statement.setInt(4, assPage.getActualScore());
-                    statement.executeUpdate();
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-            }
+    public void addSubmission (User user, AssignmentPage assPage) throws SQLException {
+        String sql = "Insert into user_ass (name,student_email,role,assignment_title,is_published,question,answer,max_score,actual_score,minimum_score) values (?,?,?,?,?,?,?,?,?,?)";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, user.getName());
+            statement.setString(2, user.getEmail());
+            statement.setString(3, user.getRole());
+            statement.setString(4, assPage.getTitle());
+            statement.setBoolean(5, assPage.isPublished());
+            statement.setString(6,assPage.getQuestion());
+            statement.setString(7, assPage.getAnswer());
+            statement.setInt(8, assPage.getMaxScore());
+            statement.setInt(9, assPage.getActualScore());
+            statement.setInt(10, assPage.getMinimumScore());
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 }

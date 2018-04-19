@@ -25,9 +25,8 @@ public final class SubmissionService {
     public void checkingSubmission(HttpServletRequest req, UserDao userDao, PageDao pageDao,AssignmentPage page1,User tempUser) throws IOException, SQLException {
         int number = 0;
 
-        AssignmentPage newPage = new AssignmentPage(page1.getTitle(),page1.isPublished(),page1.getQuestion(),page1.getAnswer(),page1.getMaxScore());
+        AssignmentPage newPage = new AssignmentPage(page1.getTitle(),page1.isPublished(),page1.getQuestion(),page1.getAnswer(),page1.getMaxScore(),page1.getActualScore(),page1.getMinimumScore());
         newPage.setAnswer(req.getParameter("answerAssign"));
-        userDao.addSubmission(tempUser,newPage);
         if(tmpMap.containsKey(tempUser)){
             ArrayList<AssignmentPage> pagez = tmpMap.get(tempUser);
             for(AssignmentPage page : pagez) {
@@ -39,8 +38,7 @@ public final class SubmissionService {
                 pagez.add(newPage);
             }
 
-        }else if (tmpMap.equals(null)||!tmpMap.containsKey(tempUser) ){
-            System.out.println("Pisti");
+        }else if (!tmpMap.containsKey(tempUser) ){
             ArrayList<AssignmentPage> asi = new ArrayList<>();
             asi.add(newPage);
             tmpMap.put(tempUser,asi);

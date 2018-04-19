@@ -8,13 +8,13 @@ public class AssignmentPage extends Page {
     private int minimumScore;
 
 
-    public AssignmentPage(String title,boolean ispublished, String question, String answer, int maxScore) {
+    public AssignmentPage(String title,boolean ispublished, String question, String answer, int maxScore,int actualScore,int minimumScore) {
         super(title,ispublished);
         this.question = question;
         this.answer = answer;
         this.maxScore = maxScore;
-        actualScore = 0;
-        minimumScore = 0;
+        this.actualScore = actualScore;
+        this.minimumScore = minimumScore;
     }
     public String getQuestion() {
         return question;

@@ -33,10 +33,16 @@ CREATE TABLE assignment_page (
 );
 
 CREATE TABLE user_ass (
+    name TEXT,
     student_email TEXT,
+    role TEXT,
     assignment_title TEXT,
+    is_published BOOLEAN,
+    question TEXT,
     answer TEXT,
+    max_score INTEGER,
     actual_score INTEGER,
+    minimum_score INTEGER,
     PRIMARY KEY (student_email, assignment_title),
     FOREIGN KEY(student_email) REFERENCES users(email),
     FOREIGN KEY(assignment_title) REFERENCES assignment_page(title)
@@ -53,7 +59,7 @@ CREATE TABLE attendance (
 INSERT INTO users (email, name,role) VALUES
 	('user1@user1', 'user1','Mentor'), -- 1
 	('user2@user2', 'user2','Student'), -- 2
-	('user2@user3', 'user3','Student'); -- 3
+	('user3@user3', 'user3','Student'); -- 3
 
 INSERT INTO text_page (title,content,is_published) VALUES
 	('Python','Hello World!','false'),   -- 1
@@ -65,3 +71,5 @@ INSERT INTO assignment_page (title, question, max_score,minimum_score,is_publish
 	('Java feladat','Hogy van a Hello World Javaban?',12,0,'false');          -- 1
 
 
+INSERT INTO user_ass(name,student_email,role,assignment_title,question,answer,max_score,actual_score,minimum_score)VALUES
+('Lakatos Armando','user3@user3','Student','Python feladat','Hogy van a Hello World pythonban?','Print("Hello World")',12,12,0);

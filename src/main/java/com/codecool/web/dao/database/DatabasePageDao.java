@@ -51,7 +51,7 @@ public class DatabasePageDao extends AbstractDao implements PageDao {
             statement.setInt(4, assignmentPage.getMaxScore());
 
             executeInsert(statement);
-            return new AssignmentPage(assignmentPage.getTitle(), assignmentPage.isPublished(), assignmentPage.getQuestion(), assignmentPage.getAnswer(), assignmentPage.getMaxScore());
+            return new AssignmentPage(assignmentPage.getTitle(), assignmentPage.isPublished(), assignmentPage.getQuestion(), assignmentPage.getAnswer(), assignmentPage.getMaxScore(),assignmentPage.getActualScore(),assignmentPage.getMinimumScore());
         } catch (SQLException ex) {
             connection.rollback();
             throw ex;
@@ -147,7 +147,7 @@ public class DatabasePageDao extends AbstractDao implements PageDao {
         String question = resultSet.getString("question");
         String answer = resultSet.getString("answer");
         int maxscore = resultSet.getInt("max_score");
-        return new AssignmentPage(title, ispublished, question, answer, maxscore);
+        return new AssignmentPage(title, ispublished, question, answer, maxscore,0,0);
     }
 
     private int fetchListSize(ResultSet resultSet) throws SQLException {
@@ -163,7 +163,7 @@ public class DatabasePageDao extends AbstractDao implements PageDao {
 
                     if (arr[i].equals(allpages.get(j).getTitle())) {
                         if (allpages.get(j) instanceof TextPage) {
-                            System.out.println(allpages.get(j).isPublished()+"Shit");
+                            System.out.println(allpages.get(j).isPublished() + "Shit");
                             if (!allpages.get(j).isPublished()) {
                                 setTextPublished(true, allpages.get(j).getTitle());
                             } else {
@@ -207,12 +207,13 @@ public class DatabasePageDao extends AbstractDao implements PageDao {
 
     @Override
     public void findAllAssignmentByUser(String email) throws SQLException {
-        Map<User,ArrayList<AssignmentPage>> submissionList = new HashMap<>();
+        Map<User, ArrayList<AssignmentPage>> submissionList = new HashMap<>();
         List<User> usrList = new ArrayList<>();
         String sql = "SELECT * from user_ass\n" +
                 "left join assignment_page on assignment_page.title = user_ass.student_email WHERE student_email = 'user1@user1'";
 
     }
+
     public Page findByAssignmentTitle(String title) throws SQLException {
         if (title == null || "".equals(title)) {
             throw new IllegalArgumentException("Email cannot be null or empty");
@@ -227,5 +228,47 @@ public class DatabasePageDao extends AbstractDao implements PageDao {
             }
         }
         return null;
+    }
+
+    public HashMap<User, ArrayList<AssignmentPage>> getSubmissionList() throws SQLException {
+        String sql = "select * from user_ass";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    return fetchAssigmentHashMap(resultSet);
+                }
+            }
+        }
+        return null;
+    }
+
+    private HashMap<User, ArrayList<AssignmentPage>> fetchAssigmentHashMap(ResultSet resultSet) throws SQLException {
+        HashMap<User, ArrayList<AssignmentPage>> tmpHashMap = new HashMap();
+        while (resultSet.next()) {
+            String name = resultSet.getString(1);
+            String email = resultSet.getString(2);
+            String role = resultSet.getString(3);
+            String pageTitle = resultSet.getString(4);
+            boolean is_published = resultSet.getBoolean(5);
+            String question = resultSet.getString(6);
+            String answer = resultSet.getString(7);
+            int max_score = resultSet.getInt(8);
+            int actual_score = resultSet.getInt(9);
+            int minimum_score = resultSet.getInt(10);
+            AssignmentPage page1 = new AssignmentPage(pageTitle, is_published, question, answer, max_score, actual_score, minimum_score);
+            User tmpuser = new User(name, email, role);
+            if (tmpHashMap.containsKey(tmpuser)) {
+                ArrayList<AssignmentPage> pagez = tmpHashMap.get(tmpuser);
+                if(!pagez.contains(page1))
+                    pagez.add(page1);
+
+            } else {
+                ArrayList<AssignmentPage> assList = new ArrayList<>();
+                assList.add(page1);
+                tmpHashMap.put(tmpuser, assList);
+
+            }
+        }
+        return tmpHashMap;
     }
 }

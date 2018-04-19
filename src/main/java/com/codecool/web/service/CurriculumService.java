@@ -34,7 +34,7 @@ public final class CurriculumService {
         PageDao pageDao = new DatabasePageDao(connection);
         CurriculumServiceInt curriculumServiceInt =new SimpleCurriculumService(pageDao) ;
         Singletondb db = Singletondb.getInstance();
-         Page assignmentPage = new AssignmentPage(req.getParameter("title"),false,req.getParameter("question"),"",Integer.parseInt(req.getParameter("maxScore")));
+         Page assignmentPage = new AssignmentPage(req.getParameter("title"),false,req.getParameter("question"),"",Integer.parseInt(req.getParameter("maxScore")),0,0);
          assignmentPage.setId(pageDao.getListSize());
          pageDao.addAssignment((AssignmentPage)assignmentPage);
          resp.sendRedirect("curriculum");
