@@ -18,7 +18,7 @@
             <ul>
             <li><a class="selected" href="registeredList">Registered Users</a></li>
             <li><a class="selected" href="userprofile">User Profile</a></li>
-            <li><a class="selected" href="curriculumAtt.jsp">Attendance List</a></li>
+            <li><a class="selected" href="check">Attendance List</a></li>
             <li><a class="selected" href="curriculum">Curriculum Page</a></li>
             <li><a class="selected" href="main.jsp">Main Page</a></li>
             <li><a class="selected" href="logout">Log out</a></li>

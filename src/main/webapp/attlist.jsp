@@ -18,7 +18,7 @@
            <ul>
            <li><a class="selected" href="registeredList">Registered Users</a></li>
            <li><a class="selected" href="userprofile">User Profile</a></li>
-           <li><a class="selected" href="curriculumAtt.jsp">Attendance List</a></li>
+           <li><a class="selected" href="check">Attendance List</a></li>
            <li><a class="selected" href="curriculum">Curriculum Page</a></li>
            <li><a class="selected" href="main.jsp">Main Page</a></li>
            <li><a class="selected" href="logout">Log out</a></li>
@@ -39,15 +39,15 @@
                </tr>
                </thead>
 
-               <c:forEach items="${att}" var="time">
+               <c:forEach items="${dates}" var="date">
                <tbody>
                <tr>
-                <td><a href="check?key=<c:out value='${time.key}' />" >${time.key}</a></td>
+                <td><a href="modify?date=<c:out value='${date}' />" >${date}</a></td>
                </tr>
                </tbody>
                </c:forEach>
                </table>
-               <a href="main.jsp"><input class="MyButton" button type="button" style="background-color:green"  value="Go Back"></button></a>
+               <a href="main.jsp"><input class="MyButton" type="button" style="background-color:green"  value="Go Back"></button></a>
            </div>
 
            <div id="footer">

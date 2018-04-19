@@ -25,34 +25,28 @@ public class CheckAttendanceServlet extends AbstractServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       UserService userService = new UserService();
+        UserService userService = new UserService();
        String[] presentEmails = userService.checkAttendance(req);
         try(Connection connection = getConnection(req.getServletContext())){
            UserDao userDao = new DatabaseUserDao(connection);
             for (int i = 0; i < presentEmails.length; i++) {
-
                 userDao.checkAttendance(req.getParameter("datepicker"),presentEmails[i]);
             }
-       } catch (SQLException e) {
-           e.printStackTrace();
-       }
-
-        req.getRequestDispatcher("curriculumAtt.jsp").forward(req, resp);
+            doGet(req, resp);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Singletondb db = Singletondb.getInstance();
-        User tmpUser = (User) req.getSession().getAttribute("logged");
-        String role = tmpUser.getRole();
-        req.setAttribute("role",role);
-        for (Map.Entry<String, Map<User, String>> entry : db.getAttend().entrySet()) {
-            if (req.getSession().getAttribute("datepicker2").equals(entry.getKey())) {
-                req.setAttribute("dateandname", entry.getValue());
-                req.getRequestDispatcher("attendancelist.jsp").forward(req, resp);
-            }
+        try (Connection connection = getConnection(req.getServletContext())) {
+            UserDao userDao = new DatabaseUserDao(connection);
+            req.setAttribute("dates",userDao.listAttDates());
+            req.getRequestDispatcher("attlist.jsp").forward(req, resp);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
     }
 }

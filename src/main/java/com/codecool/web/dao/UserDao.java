@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface UserDao {
-    public List<User> findAll() throws SQLException;
+    List<User> findAll() throws SQLException;
 
     User findByEmail(String email)throws SQLException;
 
@@ -22,4 +22,9 @@ public interface UserDao {
 
     void addSubmission(User user , AssignmentPage assPage)throws SQLException;
 
+    List<String> listAttendance(String date) throws SQLException;
+
+    List<String> listAttDates() throws SQLException;
+
+    void deleteFromAttendance(String email) throws SQLException;
 }

@@ -23,16 +23,9 @@ public class AttendanceServlet extends AbstractServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try(Connection connection = getConnection(req.getServletContext())){
-            User tempUser = (User) req.getSession().getAttribute("logged");
             UserDao userDao = new DatabaseUserDao(connection);
             req.setAttribute("allusers", userDao.findAll());
-            User currentUser = userDao.findByEmail(tempUser.getEmail());
-            if (currentUser.getRole().equalsIgnoreCase("mentor")) {
-                req.getRequestDispatcher("attendance.jsp").forward(req, resp);
-
-            } else {
-                req.getRequestDispatcher("registeredList.jsp").forward(req, resp);
-            }
+            req.getRequestDispatcher("attendance.jsp").forward(req, resp);
         }catch (SQLException e){
             e.printStackTrace();
         }

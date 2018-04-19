@@ -19,7 +19,7 @@
           <ul>
           <li><a class="selected" href="registeredList">Registered Users</a></li>
           <li><a class="selected" href="userprofile">User Profile</a></li>
-          <li><a class="selected" href="curriculumAtt.jsp">Attendance List</a></li>
+          <li><a class="selected" href="check">Attendance List</a></li>
           <li><a class="selected" href="curriculum">Curriculum Page</a></li>
           <li><a class="selected" href="main.jsp">Main Page</a></li>
           <li><a class="selected" href="logout">Log out</a></li>
@@ -38,24 +38,19 @@
                <table align="center">
                <thead>
                    <th>Name</th>
-                   <th>Was here</th>
                    <th>Modify</th>
                <thead>
 
-               <c:forEach items="${dateandname}" var="anamelist">
+               <c:forEach items="${users}" var="user">
                <tbody>
                <tr>
-               <c:if test = "${anamelist.key.role == 'Student'}">
-               <td><c:out value="${anamelist.key.name}"/></td>
-               <td><c:out value="${anamelist.value}"/></td>
-               <td><input type="checkbox" name="name" value="${anamelist.key.email}"</td>
+               <td><c:out value="${user}"/></td>
+               <td><input type="checkbox" name="email" value="${user}"</td>
                </tr>
                 </tbody>
-
-               </c:if>
                </c:forEach>
                </table>
-               <input type="submit" value="Change">
+               <input type="submit" value="change">
                </form>
 
                </c:if>
@@ -63,16 +58,10 @@
 
                  <table align="center">
                   <th>Name</th>
-                  <th>Was here</th>
-                  <c:forEach items="${dateandname}" var="anamelist">
+                  <c:forEach items="${users}" var="user">
                   <tr>
-                  <c:if test = "${anamelist.key.role == 'Student'}">
-                  <td><c:out value="${anamelist.key.name}"/></td>
-                  <td><c:out value="${anamelist.value}"/></td>
+                  <td><c:out value="${user}"/></td>
                   </tr>
-
-
-                  </c:if>
                   </c:forEach>
                   </table>
 

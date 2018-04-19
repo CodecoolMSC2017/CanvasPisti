@@ -111,6 +111,7 @@ public final class DatabaseUserDao extends AbstractDao implements UserDao {
         }
 
     }
+
     public void addSubmission (User user, AssignmentPage assPage) throws SQLException {
         String sql = "Insert into user_ass (name,student_email,role,assignment_title,is_published,question,answer,max_score,actual_score,minimum_score) values (?,?,?,?,?,?,?,?,?,?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -119,7 +120,7 @@ public final class DatabaseUserDao extends AbstractDao implements UserDao {
             statement.setString(3, user.getRole());
             statement.setString(4, assPage.getTitle());
             statement.setBoolean(5, assPage.isPublished());
-            statement.setString(6,assPage.getQuestion());
+            statement.setString(6, assPage.getQuestion());
             statement.setString(7, assPage.getAnswer());
             statement.setInt(8, assPage.getMaxScore());
             statement.setInt(9, assPage.getActualScore());
@@ -127,6 +128,43 @@ public final class DatabaseUserDao extends AbstractDao implements UserDao {
             statement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
+        }
+    }
+
+
+    public List<String> listAttendance(String date) throws SQLException {
+        String sql = "SELECT email FROM attendance WHERE att_date = ?";
+        List<String> users = new ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, date);
+            try(ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    String usersStr = resultSet.getString("email");
+                    users.add(usersStr);
+                }
+                return users;
+            }
+        }
+    }
+
+    public List<String> listAttDates() throws SQLException {
+        String sql = "SELECT att_date FROM attendance GROUP BY att_date";
+        try (Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery(sql);
+            List<String> dates = new ArrayList<>();
+            while (resultSet.next()) {
+                String datesStr = resultSet.getString("att_date");
+                dates.add(datesStr);
+            }
+            return dates;
+        }
+    }
+
+    public void deleteFromAttendance(String email) throws SQLException {
+        String sql = "DELETE FROM attendance WHERE email = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1,email);
+            statement.executeUpdate();
         }
     }
 }
