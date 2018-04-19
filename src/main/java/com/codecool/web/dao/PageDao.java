@@ -33,6 +33,8 @@ public interface PageDao {
 
     Page findByAssignmentTitle(String title) throws SQLException;
 
-    public HashMap<User,ArrayList<AssignmentPage>> getSubmissionList()throws SQLException;
+    HashMap<User,ArrayList<AssignmentPage>> getSubmissionList()throws SQLException;
+
+    public void updateAssignemnt(int score,String email, String title) throws SQLException;
 }
 

@@ -242,6 +242,17 @@ public class DatabasePageDao extends AbstractDao implements PageDao {
         return null;
     }
 
+    @Override
+    public void updateAssignemnt(int score,String email, String title) throws SQLException {
+        String sql= "UPDATE user_ass SET actual_score = ? WHERE student_email = ? and assignment_title = ?";
+        try(PreparedStatement statement = connection.prepareStatement(sql)){
+            statement.setInt(1,score);
+            statement.setString(2,email);
+            statement.setString(3,title);
+            statement.executeUpdate();
+        }
+    }
+
     private HashMap<User, ArrayList<AssignmentPage>> fetchAssigmentHashMap(ResultSet resultSet) throws SQLException {
         HashMap<User, ArrayList<AssignmentPage>> tmpHashMap = new HashMap();
         while (resultSet.next()) {

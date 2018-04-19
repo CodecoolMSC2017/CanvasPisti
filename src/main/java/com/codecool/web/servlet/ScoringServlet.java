@@ -23,10 +23,19 @@ public class ScoringServlet extends AbstractServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int actualScore = Integer.parseInt(req.getParameter("actualScore"));
-        AssignmentPage page1 = (AssignmentPage) req.getSession().getAttribute("aPage");
-        page1.setActualScore(actualScore);
-        req.getRequestDispatcher("solutionGrade").forward(req, resp);
+        try(Connection connection = getConnection(req.getServletContext())) {
+            UserDao userDao = new DatabaseUserDao(connection);
+            PageDao pageDao = new DatabasePageDao(connection);
+            User tmpUser = (User) req.getSession().getAttribute("student");
+            int actualScore = Integer.parseInt(req.getParameter("actualScore"));
+            AssignmentPage page1 = (AssignmentPage) req.getSession().getAttribute("aPage");
+            HashMap<User,ArrayList<AssignmentPage>> myMap = pageDao.getSubmissionList();
+
+            pageDao.updateAssignemnt(actualScore,tmpUser.getEmail(),page1.getTitle());
+            req.getRequestDispatcher("solutionGrade").forward(req, resp);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
