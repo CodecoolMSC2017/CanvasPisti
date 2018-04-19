@@ -99,7 +99,7 @@ public final class DatabaseUserDao extends AbstractDao implements UserDao {
 
     @Override
     public void checkAttendance(String date, String email) throws SQLException {
-        String sql = "INSERT INTO attendance (att_date,email) VALUES (?,?)";
+        String sql = "INSERT INTO attendance (att_date,att_email) VALUES (?,?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, date);
             statement.setString(2, email);
@@ -132,15 +132,14 @@ public final class DatabaseUserDao extends AbstractDao implements UserDao {
     }
 
 
-    public List<String> listAttendance(String date) throws SQLException {
-        String sql = "SELECT email FROM attendance WHERE att_date = ?";
-        List<String> users = new ArrayList<>();
+    public List<User> listAttendance(String date) throws SQLException {
+        String sql = "SELECT name, email, role FROM users INNER JOIN attendance ON attendance.att_email = users.email WHERE att_date = ?";
+        List<User> users = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, date);
             try(ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    String usersStr = resultSet.getString("email");
-                    users.add(usersStr);
+                    users.add(fetchUser(resultSet));
                 }
                 return users;
             }
@@ -161,7 +160,7 @@ public final class DatabaseUserDao extends AbstractDao implements UserDao {
     }
 
     public void deleteFromAttendance(String email) throws SQLException {
-        String sql = "DELETE FROM attendance WHERE email = ?";
+        String sql = "DELETE FROM attendance WHERE att_email = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1,email);
             statement.executeUpdate();

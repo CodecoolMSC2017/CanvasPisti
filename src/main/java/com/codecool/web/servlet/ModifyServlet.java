@@ -43,6 +43,9 @@ public class ModifyServlet extends AbstractServlet {
             User currentUser = userDao.findByEmail(tmpUser.getEmail());
             req.setAttribute("role", currentUser.getRole());
             req.setAttribute("users", userDao.listAttendance(date));
+            for(User user : userDao.listAttendance(date)) {
+                System.out.println(user.getName());
+            }
             req.getRequestDispatcher("attendancelist.jsp").forward(req, resp);
         } catch (SQLException e) {
             e.printStackTrace();

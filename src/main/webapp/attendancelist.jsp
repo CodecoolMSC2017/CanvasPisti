@@ -44,8 +44,8 @@
                <c:forEach items="${users}" var="user">
                <tbody>
                <tr>
-               <td><c:out value="${user}"/></td>
-               <td><input type="checkbox" name="email" value="${user}"</td>
+               <td><c:out value="${user.name}"/></td>
+               <td><input type="checkbox" name="email" value="${user.email}"</td>
                </tr>
                 </tbody>
                </c:forEach>
@@ -60,7 +60,7 @@
                   <th>Name</th>
                   <c:forEach items="${users}" var="user">
                   <tr>
-                  <td><c:out value="${user}"/></td>
+                  <td><c:out value="${user.name}"/></td>
                   </tr>
                   </c:forEach>
                   </table>

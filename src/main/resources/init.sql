@@ -51,8 +51,9 @@ CREATE TABLE user_ass (
 
 CREATE TABLE attendance (
     att_date TEXT NOT NULL,
-    email TEXT NOT NULL,
-    FOREIGN KEY (email) REFERENCES users(email)
+    att_email TEXT NOT NULL,
+    PRIMARY KEY (att_date, att_email),
+    FOREIGN KEY (att_email) REFERENCES users(email)
 );
 
 

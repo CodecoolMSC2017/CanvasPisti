@@ -22,7 +22,7 @@ public interface UserDao {
 
     void addSubmission(User user , AssignmentPage assPage)throws SQLException;
 
-    List<String> listAttendance(String date) throws SQLException;
+    List<User> listAttendance(String date) throws SQLException;
 
     List<String> listAttDates() throws SQLException;
 
