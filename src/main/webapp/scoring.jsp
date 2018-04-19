@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main</title>
+    <title>Scoring</title>
     <link rel="stylesheet" href="att.css">
 
 
@@ -36,7 +36,7 @@
                   <table align="center">
                   <tbody>
                   <tr>
-                  <th>Title:${student.email}</th>
+                  <th>User email:${student.email}</th>
                   </tr>
                   <tr>
                   <td>Title:${aPage.title}</td>

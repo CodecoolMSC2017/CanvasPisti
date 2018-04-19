@@ -21,7 +21,6 @@ public class SolutionGradeServlet extends AbstractServlet{
         try(Connection connection = getConnection(req.getServletContext())) {
             PageDao pageDao = new DatabasePageDao(connection);
             pageDao.getSubmissionList();
-            System.out.println(pageDao.getSubmissionList().toString());
             req.setAttribute("allsubs", pageDao.getSubmissionList());
 
             req.getRequestDispatcher("solutionGrade.jsp").forward(req, resp);

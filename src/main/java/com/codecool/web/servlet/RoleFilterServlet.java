@@ -39,7 +39,7 @@ public class RoleFilterServlet extends AbstractServlet implements Filter {
             String[] ignored = new String[]{"text.jsp", "assignment.jsp", "solutionGrade", "attendance"};
             if (tmpUser != null) {
                 User currentUser = userDao.findByEmail(tmpUser.getEmail());
-                if (currentUser.getRole().equals("Student") && Arrays.asList(ignored).contains(url) || url.contains("scoring")) {
+                if (currentUser.getRole().equals("Student") && Arrays.asList(ignored).contains(url)) {
                     req.getRequestDispatcher("main.jsp").forward(req, res);
                 } else {
                     filterChain.doFilter(request, response);

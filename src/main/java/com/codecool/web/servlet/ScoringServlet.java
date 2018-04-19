@@ -1,21 +1,25 @@
 package com.codecool.web.servlet;
 
+import com.codecool.web.dao.PageDao;
+import com.codecool.web.dao.UserDao;
+import com.codecool.web.dao.database.DatabasePageDao;
+import com.codecool.web.dao.database.DatabaseUserDao;
 import com.codecool.web.model.AssignmentPage;
-import com.codecool.web.model.Singletondb;
 import com.codecool.web.model.User;
-import com.codecool.web.service.ScoringService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 @WebServlet("/scoring")
-public class ScoringServlet extends HttpServlet {
+public class ScoringServlet extends AbstractServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,9 +31,28 @@ public class ScoringServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Singletondb db = Singletondb.getInstance();
-        ScoringService ss = new ScoringService();
-        ss.Scoring(req, db);
-        req.getRequestDispatcher("scoring.jsp").forward(req, resp);
+        System.out.println("pisti");
+        try (Connection connection = getConnection(req.getServletContext())) {
+            PageDao pageDao = new DatabasePageDao(connection);
+            HashMap<User,ArrayList<AssignmentPage>> myMap = pageDao.getSubmissionList();
+            for (Map.Entry<User, ArrayList<AssignmentPage>> entry : myMap.entrySet()) {
+                if (entry.getKey().getEmail().equals(req.getParameter("student"))) {
+                    req.setAttribute("student",entry.getKey());
+                    req.getSession().setAttribute("student", entry.getKey());
+                    ArrayList<AssignmentPage> pages = myMap.get(entry.getKey());
+                    for (AssignmentPage asign : pages) {
+                        if (asign.getTitle().equals(req.getParameter("item"))) {
+                            req.setAttribute("aPage", asign);
+                            req.getSession().setAttribute("aPage", asign);
+                        }
+                    }
+                }
+            }
+            req.getRequestDispatcher("scoring.jsp").forward(req, resp);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }
