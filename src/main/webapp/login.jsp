@@ -22,7 +22,7 @@
 
                 <form name="loginform" method="post" action="loginServlet">
                     </br><strong>Your e-mail</strong></br>
-                    <input type="text" name="email">
+                    <input type="text" name="email" required>
                     </br>
 
                     <input class="MyButton" type="submit" value="Log in!" />
