@@ -34,7 +34,6 @@
                <h2>Attandance List page</h2>
                <c:if test = "${role == 'Mentor'}">
                <form action="modify" method="post">
-
                <table align="center">
                <thead>
                    <th>Name</th>

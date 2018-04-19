@@ -26,5 +26,5 @@ public interface UserDao {
 
     List<String> listAttDates() throws SQLException;
 
-    void deleteFromAttendance(String email) throws SQLException;
+    void deleteFromAttendance(String email, String date) throws SQLException;
 }

@@ -159,10 +159,11 @@ public final class DatabaseUserDao extends AbstractDao implements UserDao {
         }
     }
 
-    public void deleteFromAttendance(String email) throws SQLException {
-        String sql = "DELETE FROM attendance WHERE att_email = ?";
+    public void deleteFromAttendance(String email, String date) throws SQLException {
+        String sql = "DELETE FROM attendance WHERE att_email = ? AND att_date = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1,email);
+            statement.setString(2, date);
             statement.executeUpdate();
         }
     }
