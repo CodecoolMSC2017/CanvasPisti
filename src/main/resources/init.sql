@@ -17,7 +17,7 @@ CREATE TABLE users (
 CREATE TABLE text_page (
     title TEXT PRIMARY KEY,
     content TEXT NOT NULL,
-    is_published BOOLEAN NOT NULL
+    is_published BOOLEAN
 	CONSTRAINT content_not_empty CHECK (content <> '')
 );
 
@@ -26,9 +26,9 @@ CREATE TABLE assignment_page (
     question TEXT NOT NULL,
     answer TEXT ,
     max_score INTEGER NOT NULL,
-    minimum_score INTEGER NOT NULL,
+    minimum_score INTEGER,
     actual_score INTEGER,
-    is_published BOOLEAN NOT NULL
+    is_published BOOLEAN
 
 );
 

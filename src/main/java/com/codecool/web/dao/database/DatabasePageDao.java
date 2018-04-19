@@ -25,10 +25,11 @@ public class DatabasePageDao extends AbstractDao implements PageDao {
         }
         boolean autoCommit = connection.getAutoCommit();
         connection.setAutoCommit(false);
-        String sql = "INSERT INTO text_page (title,content) VALUES (?,?)";
+        String sql = "INSERT INTO text_page (title,is_published,content) VALUES (?,?,?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, textPage.getTitle());
-            statement.setString(2, textPage.getContent());
+            statement.setBoolean(2,textPage.isPublished());
+            statement.setString(3, textPage.getContent());
             executeInsert(statement);
             return new TextPage(textPage.getTitle(), textPage.isPublished(), textPage.getContent());
         } catch (SQLException ex) {
@@ -43,12 +44,13 @@ public class DatabasePageDao extends AbstractDao implements PageDao {
     public AssignmentPage addAssignment(AssignmentPage assignmentPage) throws SQLException {
         boolean autoCommit = connection.getAutoCommit();
         connection.setAutoCommit(false);
-        String sql = "INSERT INTO assignment_page (title,question,answer,max_score) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO assignment_page (title,is_published,question,answer,max_score) VALUES (?,?,?,?,?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, assignmentPage.getTitle());
-            statement.setString(2, assignmentPage.getQuestion());
-            statement.setString(3, assignmentPage.getAnswer());
-            statement.setInt(4, assignmentPage.getMaxScore());
+            statement.setBoolean(2,assignmentPage.isPublished());
+            statement.setString(3, assignmentPage.getQuestion());
+            statement.setString(4, assignmentPage.getAnswer());
+            statement.setInt(5, assignmentPage.getMaxScore());
 
             executeInsert(statement);
             return new AssignmentPage(assignmentPage.getTitle(), assignmentPage.isPublished(), assignmentPage.getQuestion(), assignmentPage.getAnswer(), assignmentPage.getMaxScore(),assignmentPage.getActualScore(),assignmentPage.getMinimumScore());
