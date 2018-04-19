@@ -6,6 +6,7 @@ import com.codecool.web.dao.UserDao;
 import com.codecool.web.dao.database.DatabasePageDao;
 import com.codecool.web.dao.database.DatabaseUserDao;
 import com.codecool.web.model.AssignmentPage;
+import com.codecool.web.model.Grade;
 import com.codecool.web.model.User;
 
 import javax.servlet.ServletException;
@@ -25,7 +26,10 @@ public class GradeServlet extends AbstractServlet {
         try(Connection connection = getConnection(req.getServletContext())){
             PageDao pageDao = new DatabasePageDao(connection);
             User tempUser = (User) req.getSession().getAttribute("logged");
-            Map<User,ArrayList<AssignmentPage>> myMap = pageDao.getSubmissionList();
+            ArrayList<Grade> myList = pageDao.listAllGrades(tempUser.getEmail());
+            System.out.println(myList.size());
+            req.setAttribute("userassigns", myList);
+            /*Map<User,ArrayList<AssignmentPage>> myMap = pageDao.getSubmissionList();
             for (Map.Entry<User, ArrayList<AssignmentPage>> entry : myMap.entrySet()) {
                 if (entry.getKey().getEmail().equals(tempUser.getEmail())){
                     ArrayList<AssignmentPage> pagez = myMap.get(entry.getKey());
@@ -33,7 +37,7 @@ public class GradeServlet extends AbstractServlet {
                     req.setAttribute("userassigns", pagez);
 
                 }
-            }
+            }*/
             req.getRequestDispatcher("grades.jsp").forward(req, resp);
         } catch (SQLException e) {
             e.printStackTrace();

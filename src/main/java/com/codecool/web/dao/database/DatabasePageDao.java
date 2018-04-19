@@ -1,10 +1,7 @@
 package com.codecool.web.dao.database;
 
 import com.codecool.web.dao.PageDao;
-import com.codecool.web.model.AssignmentPage;
-import com.codecool.web.model.Page;
-import com.codecool.web.model.TextPage;
-import com.codecool.web.model.User;
+import com.codecool.web.model.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.*;
@@ -19,6 +16,22 @@ public class DatabasePageDao extends AbstractDao implements PageDao {
     }
 
     @Override
+    public ArrayList<Grade> listAllGrades(String email) throws SQLException {
+        String sql = "Select * from user_ass where student_email = ?";
+        ArrayList<Grade> myList = new ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, email);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    myList.add(fetchGrade(resultSet));
+                }
+            }
+        }
+        System.out.println(myList.size() + "listallgRadeds");
+        return myList;
+    }
+
+    @Override
     public TextPage addTextPage(TextPage textPage) throws SQLException {
         if (textPage.getContent().equals(null) || "".equals(textPage.getTitle())) {
             throw new IllegalArgumentException("Nem fasza báttya");
@@ -28,7 +41,7 @@ public class DatabasePageDao extends AbstractDao implements PageDao {
         String sql = "INSERT INTO text_page (title,is_published,content) VALUES (?,?,?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, textPage.getTitle());
-            statement.setBoolean(2,textPage.isPublished());
+            statement.setBoolean(2, textPage.isPublished());
             statement.setString(3, textPage.getContent());
             executeInsert(statement);
             return new TextPage(textPage.getTitle(), textPage.isPublished(), textPage.getContent());
@@ -47,13 +60,13 @@ public class DatabasePageDao extends AbstractDao implements PageDao {
         String sql = "INSERT INTO assignment_page (title,is_published,question,answer,max_score) VALUES (?,?,?,?,?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, assignmentPage.getTitle());
-            statement.setBoolean(2,assignmentPage.isPublished());
+            statement.setBoolean(2, assignmentPage.isPublished());
             statement.setString(3, assignmentPage.getQuestion());
             statement.setString(4, assignmentPage.getAnswer());
             statement.setInt(5, assignmentPage.getMaxScore());
 
             executeInsert(statement);
-            return new AssignmentPage(assignmentPage.getTitle(), assignmentPage.isPublished(), assignmentPage.getQuestion(), assignmentPage.getAnswer(), assignmentPage.getMaxScore(),assignmentPage.getActualScore(),assignmentPage.getMinimumScore());
+            return new AssignmentPage(assignmentPage.getTitle(), assignmentPage.isPublished(), assignmentPage.getQuestion(), assignmentPage.getAnswer(), assignmentPage.getMaxScore(), assignmentPage.getActualScore(), assignmentPage.getMinimumScore());
         } catch (SQLException ex) {
             connection.rollback();
             throw ex;
@@ -149,12 +162,25 @@ public class DatabasePageDao extends AbstractDao implements PageDao {
         String question = resultSet.getString("question");
         String answer = resultSet.getString("answer");
         int maxscore = resultSet.getInt("max_score");
-        return new AssignmentPage(title, ispublished, question, answer, maxscore,0,0);
+        return new AssignmentPage(title, ispublished, question, answer, maxscore, 0, 0);
     }
 
     private int fetchListSize(ResultSet resultSet) throws SQLException {
         int listSize = resultSet.getInt("count");
         return listSize;
+    }
+
+    private Grade fetchGrade(ResultSet resultSet) throws SQLException {
+
+            String email = resultSet.getString("student_email");
+            String title = resultSet.getString("assignment_title");
+            int actScore = resultSet.getInt("actual_score");
+            int maxScore = resultSet.getInt("max_score");
+            Grade grade1 = new Grade(email, title, actScore, maxScore);
+            return grade1;
+
+
+
     }
 
     @Override
@@ -245,12 +271,12 @@ public class DatabasePageDao extends AbstractDao implements PageDao {
     }
 
     @Override
-    public void updateAssignemnt(int score,String email, String title) throws SQLException {
-        String sql= "UPDATE user_ass SET actual_score = ? WHERE student_email = ? and assignment_title = ?";
-        try(PreparedStatement statement = connection.prepareStatement(sql)){
-            statement.setInt(1,score);
-            statement.setString(2,email);
-            statement.setString(3,title);
+    public void updateAssignemnt(int score, String email, String title) throws SQLException {
+        String sql = "UPDATE user_ass SET actual_score = ? WHERE student_email = ? and assignment_title = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, score);
+            statement.setString(2, email);
+            statement.setString(3, title);
             statement.executeUpdate();
         }
     }
@@ -272,7 +298,7 @@ public class DatabasePageDao extends AbstractDao implements PageDao {
             User tmpuser = new User(name, email, role);
             if (tmpHashMap.containsKey(tmpuser)) {
                 ArrayList<AssignmentPage> pagez = tmpHashMap.get(tmpuser);
-                if(!pagez.contains(page1))
+                if (!pagez.contains(page1))
                     pagez.add(page1);
 
             } else {

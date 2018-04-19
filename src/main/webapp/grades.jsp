@@ -36,14 +36,16 @@
                      <thead>
                         <th>Student Submiter</th>
                         <th>Assignment Title</th>
-                        <th>Score</th>
+                        <th>Actual Score</th>
+                        <th>Max Score</th>
                      </thead>
                      <tbody>
                             <c:forEach items="${userassigns}" var="item">
                             <tr>
-                            <td>${username}</td>
+                            <td><c:out value="${item.email}" /></td>
                             <td><c:out value="${item.title}" /></td>
-                            <td><c:out value ="${item.actualScore}"/> / <c:out value="${item.maxScore}" /></td>
+                            <td><c:out value ="${item.actScore}"/></td>
+                            <td><c:out value ="${item.maxScore}"/></td>
                             </tr>
                             </c:forEach>
                      </tbody>

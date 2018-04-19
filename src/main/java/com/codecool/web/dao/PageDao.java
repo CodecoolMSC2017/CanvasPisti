@@ -1,9 +1,6 @@
 package com.codecool.web.dao;
 
-import com.codecool.web.model.AssignmentPage;
-import com.codecool.web.model.Page;
-import com.codecool.web.model.TextPage;
-import com.codecool.web.model.User;
+import com.codecool.web.model.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
@@ -35,6 +32,8 @@ public interface PageDao {
 
     HashMap<User,ArrayList<AssignmentPage>> getSubmissionList()throws SQLException;
 
-    public void updateAssignemnt(int score,String email, String title) throws SQLException;
+    void updateAssignemnt(int score,String email, String title) throws SQLException;
+
+    ArrayList<Grade> listAllGrades(String email) throws SQLException;
 }
 
